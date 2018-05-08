@@ -1,6 +1,6 @@
 # Hy2roresO
-QGIS Plugin that compute some stream hierarchisation system (Strahler, Horton, Shreve).
-
+Site : http://
+Documentation : http://hy2roreso.readthedocs.io
 
 ## Description
 Coming soon...!
