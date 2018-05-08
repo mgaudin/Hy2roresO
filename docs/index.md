@@ -4,6 +4,7 @@ QGIS Plugin that compute some stream hierarchisation system (Strahler, Horton, S
 
 ## Description
 Website : https://mgaudin.github.io/Hy2roresO/
+
 Documentation : http://hy2roreso.readthedocs.io
 
 ## Credits
