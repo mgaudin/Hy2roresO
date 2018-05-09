@@ -37,6 +37,7 @@ Information about development is also available:
 
    docs
    settings
+   perspectives
 
 .. _about-docs:
 
