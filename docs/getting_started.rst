@@ -8,15 +8,13 @@ displayed beautifully for the world.
 If you are already using Sphinx or Markdown for your docs, skip ahead to
 :ref:`import-docs`.
 
-Write Your Docs
+A quick introduction
 ---------------
 
 You have two options for formatting your documentation:
 
 * :ref:`in-rst`
 * :ref:`in-markdown`
-
-.. _in-rst:
 
 In reStructuredText
 ~~~~~~~~~~~~~~~~~~~
@@ -52,8 +50,6 @@ or `this template`_ if you need help). Build them to see how they look::
 
 Edit your files and rebuild until you like what you see, then commit your changes and push to your public repository.
 Once you have Sphinx documentation in a public repository, you can start using Read the Docs.
-
-.. _in-markdown:
 
 In Markdown
 ~~~~~~~~~~~
@@ -91,7 +87,7 @@ Installing the plugin
 From QGIS Plugin Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install the plugin, you can simply use QGIS Plugin Manager. In your QGIS, click ``Plugin`` menu and ``Manage and Install Plugins``... After the Plugin Installer dialog shows up, search for QGIS Resources Sharing in the search box of the dialog in the All tab. Select the Hy2roresO plugin and click ``Install``
+To install the plugin, you can simply use QGIS Plugin Manager. In your QGIS, click ``Plugin`` menu and ``Manage and Install Plugins``... After the Plugin Installer dialog shows up, search for H2roresO in the search box of the dialog in the ``All`` tab. Select the Hy2roresO plugin and click ``Install``
 
 From the repository
 ~~~~~~~~~~~~~~~~~~~
