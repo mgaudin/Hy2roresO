@@ -45,7 +45,7 @@ Information about development is also available:
    :maxdepth: 2
    :caption: About Hy2roresO
 
-   dev-docs/team
-   dev-docs/story
-   dev-docs/acknowledgments
-   dev-docs/contribute
+   about-docs/team
+   about-docs/story
+   about-docs/acknowledgments
+   about-docs/contribute
