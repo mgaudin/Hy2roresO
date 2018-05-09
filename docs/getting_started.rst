@@ -47,7 +47,6 @@ Edit your files and rebuild until you like what you see, then commit your change
 Once you have Sphinx documentation in a public repository, you can start using Read the Docs.
 
 In Markdown
-~~~~~~~~~~~
 
 You can use Markdown and reStructuredText in the same Sphinx project.
 We support this natively on Read the Docs, and you can do it locally::
