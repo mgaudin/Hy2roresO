@@ -13,11 +13,6 @@ A quick introduction
 
 You have two options for formatting your documentation:
 
-* :ref:`in-rst`
-* :ref:`in-markdown`
-
-In reStructuredText
-~~~~~~~~~~~~~~~~~~~
 
 There is `a screencast`_ that will help you get started if you prefer.
 
