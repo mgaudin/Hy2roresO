@@ -46,5 +46,5 @@ Information about development is also available:
 
    team
    story
-   acknowledgment
+   acknowledgments
    contribute
