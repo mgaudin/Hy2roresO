@@ -26,8 +26,8 @@ Information about development is also available:
    :maxdepth: 2
    :caption: User Documentation
 
-   getting_started
-   how_to
+   user-docs/getting_started
+   user-docs/how_to
 
 .. _dev-docs:
 
@@ -35,9 +35,9 @@ Information about development is also available:
    :maxdepth: 2
    :caption: Developer Documentation
 
-   docs
-   settings
-   perspectives
+   dev-docs/docs
+   dev-docs/settings
+   dev-docs/perspectives
 
 .. _about-docs:
 
@@ -45,7 +45,7 @@ Information about development is also available:
    :maxdepth: 2
    :caption: About Hy2roresO
 
-   team
-   story
-   acknowledgments
-   contribute
+   dev-docs/team
+   dev-docs/story
+   dev-docs/acknowledgments
+   dev-docs/contribute
