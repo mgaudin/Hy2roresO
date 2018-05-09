@@ -1,4 +1,4 @@
-Hy2roresO documentation
+Documentation
 =========
 
 Coming soon!
