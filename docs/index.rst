@@ -53,45 +53,8 @@ Information about development is also available:
 
 .. toctree::
    :maxdepth: 2
-   :caption: About Read the Docs
+   :caption: About Hy2roresO
 
    team
    story
    contribute
-   gsoc
-   code-of-conduct
-   ethical-advertising
-   advertising-details
-   sponsors
-   open-source-philosophy
-
-
-
-.. include:: ../README.rst
-
-.. toctree::
-   :caption: Theme Documentation
-   :maxdepth: 2
-
-   installing
-   configuring
-   changelog
-   contributing
-
-
-.. toctree::
-    :maxdepth: 2
-    :numbered:
-    :caption: Demo Documents
-
-    demo/structure
-    demo/demo
-    demo/lists_tables
-    demo/api
-
-.. toctree::
-    :maxdepth: 3
-    :numbered:
-    :caption: This is an incredibly long caption for a long menu
-
-    demo/long
