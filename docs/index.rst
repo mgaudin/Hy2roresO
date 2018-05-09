@@ -37,12 +37,11 @@ Information about development is also available:
 
    docs
    settings
-   tests
 
 .. _about-docs:
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: About Hy2roresO
 
    team
