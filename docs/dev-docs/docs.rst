@@ -28,14 +28,18 @@ Coming soon!
     """
 
 .. py:function:: make_stuff(val1, val2)
-Return the added values.
+    
+    Return the added values.
+    
+    :param val1: First number to add.
+    :type val1: int
+        
+    :param val2: Second number to add.
+    :type val2: int
+    
+    :return: Sum
+    :rtype: int
 
-        :param val1: First number to add.
-        :type val1: int
-        :param val2: Second number to add.
-        :type val2: int
-        :return: Sum
-        :rtype: int
 
 .. py:method:: name(parameters)
 
