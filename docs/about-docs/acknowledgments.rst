@@ -1,11 +1,10 @@
 Acknowledgment
 ==============
 
-Coming soon!
+We would like to thank very much our mentor, Cécile Duchene, for her time, her patience and her dedication to the accomplishment of this project.
 
-Cécile Duchene
-Guillaume Touya
+We also thank Guillaume Touya, head of the COGIT Research Unit at the Institut National de l'Information Géographique et Forestière, for its precious advises on the implementations of the computation of stream orders algorithms.
 
-The Ecole Nationale des Sciences Géographiques for the working conditions provided.
+Greetings to the Ecole Nationale des Sciences Géographiques for the working conditions provided.
 
-Nicolas, Luc, Marion, Alice, Jocelyn, Mattthieu, Hugo and a half Robin, that supported us during the development of this project.
+Finally, a thought to Nicolas, Luc, Marion, Alice, Jocelyn, Mattthieu, Hugo and most of the time Robin, that supported us during the whole development of this project.
