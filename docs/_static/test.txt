@@ -1,3 +1,10 @@
 Hello World
 
 .. image:: 32313258_1899396366737553_951293590586261504_n.png
+
+.. image:: 32313258_1899396366737553_951293590586261504_n.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
