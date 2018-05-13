@@ -31,6 +31,8 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
+.. image:: :/_static/strahler.png
+
 Shreve stream order
 -------------------
 
@@ -53,6 +55,8 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
+.. image:: :/_static/shreve.png
+
 Horton stream order
 -------------------
 
@@ -73,3 +77,5 @@ Hypotheses
 
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
+
+.. image:: :/_static/horton.png
