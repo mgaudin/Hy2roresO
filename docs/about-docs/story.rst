@@ -1,6 +1,4 @@
 Story
 =====
 
-Coming soon!
-
-This project was developped between February and May 2018 by three students of the Ecole Nationale des Sciences Géographique, under the mentoring of Cécile Duchene.
+This project was developed between February and May 2018 by three students of the National School of Geomatics (ENSG), under the mentoring of Cécile Duchêne.
