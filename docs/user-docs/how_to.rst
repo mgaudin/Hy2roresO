@@ -11,8 +11,8 @@ Step 1 : essential parameters
 You will find yourself in front of a window :
 
 The first parameters you must enter are :
-- the layer which you want to apply the algorithm
-- the stream orders you want to get thanks to the plugin : Strahler, Shreve and Horton (you can see the description of each of these orders here)
+ - the layer which you want to apply the algorithm
+ - the stream orders you want to get thanks to the plugin : Strahler, Shreve and Horton (you can see the description of each of these orders here)
 
 Click on **Next** to go to the next parameters.
 
@@ -29,10 +29,10 @@ Step 3 : process and output
 ----------------
 
 On this window you can :
-- authorize the algorithm to reverse streams that may not be entered well and therefore cause some mistakes in the attribution of the orders (checked initially)
-- add a boolean field *reversed* to the layer you are applying the algorithm on, if during the algorithm some streams have been reversed (checked initially)
-- save the output layer, and choose the path where you want to save this layer
-- add the layer to the project instead of updating the input layer
+ - authorize the algorithm to reverse streams that may not be entered well and therefore cause some mistakes in the attribution of the orders (checked initially)
+ - add a boolean field *reversed* to the layer you are applying the algorithm on, if during the algorithm some streams have been reversed (checked initially)
+ - save the output layer, and choose the path where you want to save this layer
+ - add the layer to the project instead of updating the input layer
 
 Once you have finished, you can click on **Next** to get more informations about the elaboration of the plugin.
 
