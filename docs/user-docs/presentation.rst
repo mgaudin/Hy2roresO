@@ -31,7 +31,7 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/strahler.png
+.. image:: ../_static/strahler.png
    :align: center
 
 Shreve stream order
@@ -56,7 +56,7 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/shreve.png
+.. image:: ../_static/shreve.png
    :align: center
 
 Horton stream order
@@ -80,5 +80,5 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/horton.png
+.. image:: ../_static/horton.png
    :align: center
