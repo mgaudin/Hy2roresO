@@ -81,7 +81,7 @@ Installing the plugin
 From QGIS Plugin Manager
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install the plugin, you can simply use QGIS Plugin Manager. In your QGIS, click ``Plugin`` menu and ``Manage and Install Plugins``... After the Plugin Installer dialog shows up, search for H2roresO in the search box of the dialog in the ``All`` tab. Select the Hy2roresO plugin and click ``Install``
+To install the plugin, you can simply use QGIS Plugin Manager. In your QGIS, click ``Plugin`` menu and ``Manage and Install Plugins``... After the Plugin Installer dialog shows up, search for Hy2roresO in the search box of the dialog in the ``All`` tab. Select the Hy2roresO plugin and click ``Install``
 
 From the repository
 ~~~~~~~~~~~~~~~~~~~
