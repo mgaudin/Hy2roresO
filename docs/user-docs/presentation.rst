@@ -31,7 +31,7 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/strahler.png
+.. image:: /_static/strahler.png
 
 Shreve stream order
 -------------------
