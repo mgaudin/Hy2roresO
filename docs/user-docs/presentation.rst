@@ -31,9 +31,11 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: ../_static/strahler.png
+.. figure:: ../_static/strahler.png
    :align: center
-
+   
+   Example of application of the Strahler stream order on a network
+   
 Shreve stream order
 -------------------
 
@@ -56,8 +58,10 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: ../_static/shreve.png
+.. figure:: ../_static/shreve.png
    :align: center
+   
+   Example of application of the Shreve stream order on a network
 
 Horton stream order
 -------------------
@@ -80,5 +84,7 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-.. image:: ../_static/horton.png
+.. figure:: ../_static/horton.png
    :align: center
+   
+   Example of application of the Horton stream order on a network
