@@ -5,7 +5,8 @@ Website : https://mgaudin.github.io/Hy2roresO/
 
 
 ## Description
-Coming soon...!
+
+This QGIS plugin computes different stream orders that can be applied to hydrological networks, to get more information about these networks. It is developed for QGIS 3.0 with Python 3.6.
 
 ## Credits
 
