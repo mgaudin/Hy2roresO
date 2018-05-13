@@ -34,7 +34,7 @@ please refer to the Programmer Documentation.
 .. figure:: ../_static/strahler.png
    :align: center
    
-   Example of application of the Strahler stream order on a network
+   Example of application of the **Strahler stream order** on a network
    
 Shreve stream order
 -------------------
@@ -61,7 +61,7 @@ please refer to the Programmer Documentation.
 .. figure:: ../_static/shreve.png
    :align: center
    
-   Example of application of the Shreve stream order on a network
+   Example of application of the **Shreve stream order** on a network
 
 Horton stream order
 -------------------
@@ -87,4 +87,4 @@ please refer to the Programmer Documentation.
 .. figure:: ../_static/horton.png
    :align: center
    
-   Example of application of the Horton stream order on a network
+   Example of application of the **Horton stream order** on a network
