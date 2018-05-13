@@ -31,10 +31,11 @@ Hypotheses
 Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
 please refer to the Programmer Documentation.
 
-<p align="center">
-  <img src="/Hy2roresO/blob/master/docs/_static/strahler.png" width="350"/>
-</p>
-
+.. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/strahler.png
+   :height: 100px
+   :width: 200 px
+   :align: center
+   
 Shreve stream order
 -------------------
 
