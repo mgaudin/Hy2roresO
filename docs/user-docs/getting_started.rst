@@ -1,7 +1,7 @@
 Getting Started
 ===============
 
-This document will show you how to get up and running with **Read the Docs**.
+This document will show you how to get up and running with **Hy2roresO**.
 You will have your docs imported on Read the Docs in 5 minutes,
 displayed beautifully for the world.
 
@@ -88,7 +88,7 @@ From the repository
 
 If you are adventurous and would like to get the latest code of the plugin, you can install it directly from the repository. The repository is in Github here. There are 2 ways that you can do generally:
 
-* Download the zip from github here: ZIP Master, extract the zip, and copy the extracted root directory into QGIS local plugins directory (on Linux it’s ``~/.qgis2/python/plugins``, on Windows it’s ``C:\Users\{username}\.qgis2\python\plugins``)
+* Download the zip from github here: ZIP Master, extract the zip, and copy the extracted root directory into QGIS local plugins directory (on Linux it’s ``~/.local/share/QGIS/QGIS3/profiles/default/python/plugins`` where ``~` is ``/home/USER``, on Windows it’s ``C:\Users\{username}\AppData\Roaming\QGIS\QGIS3\profiles\default\python\plugins``)
 
 * Use git: clone the repository in that directory or clone in your preferred location and use symbolic link in local plugins directory.
 
