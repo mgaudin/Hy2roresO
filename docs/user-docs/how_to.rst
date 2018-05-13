@@ -12,7 +12,8 @@ You will find yourself in front of a window :
 
 The first parameters you must enter are :
  - the layer which you want to apply the algorithm
- - the stream orders you want to get thanks to the plugin : Strahler, Shreve and Horton (you can see the description of each of these orders here)
+ - the stream orders you want to get thanks to the plugin : Strahler, Shreve and Horton (you can see the description of each of these orders here_)
+ .. _here: ../user-docs/presentation.rst
 
 Click on **Next** to go to the next parameters.
 
