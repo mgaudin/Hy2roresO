@@ -26,6 +26,7 @@ Information about development is also available:
    :maxdepth: 2
    :caption: User Documentation
 
+   user-docs/presentation
    user-docs/getting_started
    user-docs/how_to
 
