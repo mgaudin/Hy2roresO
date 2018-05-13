@@ -57,6 +57,7 @@ Some hypothesis were made during the computing of the plugin. For more details a
 please refer to the Programmer Documentation.
 
 .. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/shreve.png
+   :align: center
 
 Horton stream order
 -------------------
@@ -80,3 +81,4 @@ Some hypothesis were made during the computing of the plugin. For more details a
 please refer to the Programmer Documentation.
 
 .. image:: https://github.com/mgaudin/Hy2roresO/blob/master/docs/_static/horton.png
+   :align: center
