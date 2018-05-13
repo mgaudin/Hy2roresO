@@ -3,6 +3,8 @@ QGIS Plugin that compute some stream hierarchisation system (Strahler, Horton, S
 
 Website : https://mgaudin.github.io/Hy2roresO/
 
+Documentation : http://hy2roreso.readthedocs.io
+
 
 ## Description
 
@@ -10,7 +12,7 @@ This QGIS plugin computes different stream orders that can be applied to hydrolo
 
 ## Credits
 
-Work realised during a project by three students of the Ecole Nationale des Sciences Géographiques (ENSG).
+Work realised during a project by three students of the Ecole Nationale des Sciences Géographiques (ENSG) under the mentoring of Cecile Duchene (cecile.duchene@ensg.eu).
 
 Michaël Gaudin (michael.gaudin@ensg.eu)
 
