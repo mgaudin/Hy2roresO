@@ -97,7 +97,7 @@ For each edge can also be calculated the Horton stream order. To compute it, we 
 Conditions to elaborate the strokes
 ###################
 
-Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions [TOUYA 2007]_ :
+Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions [TOUYA2007]_ :
  - the name of the outgoing edge exists and is exactly the same as one of its incoming edges
  - the incoming edge that has the highest flow (if it exists in the data). This condition is not handled in the algorithm.
  - one of the incoming stroke is more than 3 times longer than the other incoming strokes
