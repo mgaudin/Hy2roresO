@@ -66,7 +66,7 @@ Orders
 ~~~~~~~~~~~~
 
 The orders are defined in the user documentation_. They are computed in the algorithm, and a column for each order chosen will be created in the output layer containing these orders.
- .. documentation_: ..\user-docs\presentation.html
+ .. _documentation: ../user-docs/presentation.html
  
 The algorithm also treats cases that have not been treated properly in former plugins, such as the islands. If there is a succession of adjacent island (complex island), these islands are aggregated to form a simple island, so as to generalize the case as if it was a simple island.
 
