@@ -35,7 +35,7 @@ It also uses several global variables during its process, which will be detailed
 Input data
 ------------
 
-The plugin treats a layer which must be a network. The network should not contain artificial zones such as irrigation zones, since the results in these zones will be irrelevant.
+The plugin handles a layer which must be a network. The network should not contain artificial zones such as irrigation zones, since the results in these zones will be irrelevant.
 The layer must also not contain duplicated geometries, since it will create irrelevant orders that will be way higher than the good ones.
 
 The algorithm 
@@ -74,7 +74,7 @@ Orders
 The orders are defined in the user documentation_. They are computed in the algorithm, and a column for each order chosen will be created in the output layer containing these orders.
  .. _documentation: ../user-docs/presentation.html
  
-The algorithm also treats cases that have not been treated properly in former plugins, such as the islands. If there is a succession of adjacent island (complex island), these islands are aggregated to form a simple island, so as to generalize the case as if it was a simple island.
+The algorithm also handles cases that have not been treated properly in former plugins, such as the islands. If there is a succession of adjacent island (complex island), these islands are aggregated to form a simple island, so as to generalize the case as if it was a simple island.
 
 Strahler stream order
 ++++++++++++++++
