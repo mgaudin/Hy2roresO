@@ -96,12 +96,14 @@ For each edge can also be calculated the Horton stream order. To compute it, we 
 Conditions to elaborate the strokes
 ###################
 
-Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions :
+Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions [Touya 2007]_ :
  - the name of the outgoing edge exists and is exactly the same as one of its incoming edges
  - the incoming edge that has the highest flow (if it exists in the data)
  - one of the incoming stroke is more than 3 times longer than the other incoming strokes
  - the stroke that creates an angle that is the closest to 180 degrees (more continuous)
 After defining the strokes, we can attribute for each edges of a stroke the same Horton stream order, which is the maximum of the Strahler order of the edges of the stroke. The main stroke gets therefore the maximum Strahler stream order, and so one until each stroke is treated.
+
+.. [Touya 2007] http://recherche.ign.fr/labos/cogit/publiCOGITDetail.php?idpubli=4181&portee=labo&id=1&classement=date&duree=100&nomcomplet=Touya%20Guillaume&annee=2007&principale=
 
 Update of the table
 -----------------
