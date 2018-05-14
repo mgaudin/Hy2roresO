@@ -43,7 +43,12 @@ The algorithm
 Classes
 ~~~~~~~~~~~~
 
-The algorithm sets 2 classes : *Edges* and *Nodes*. Both of them have attributes that define them and are useful for the good process of the algorithm. DIAGRAMME DE CLASSE
+The algorithm sets 3 classes : *Edge*, *Node* and *Island*. Both of them have attributes that define them and that are useful for the good process of the algorithm.
+
+.. figure:: ../_static/class_diagram.png
+   :align: center
+   
+   Class diagram of the algorithm
     
 Initialisation
 ~~~~~~~~~~~~
