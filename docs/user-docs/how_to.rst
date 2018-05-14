@@ -11,7 +11,7 @@ Your layer must not contain artificial networks (such as irrigation zones), and 
  
 The output of the plugin will either be the input layer with new fields corresponding to the different orders or a new layer with all the fields from the input layer and the fields created through the algorithm.
 
-To open the Hy2roresO plugin, go to the menu Extension, then find Hy2roresO and open it. You can also find it thanks to its icon : ICON
+To open the Hy2roresO plugin, go to the *Extension* menu, then find Hy2roresO and open it. You can also find it thanks to its icon : ICON
 
 *Note : You do not need to be in editing mode to use Hy2roresO, it occurs automatically by processing.*
 
