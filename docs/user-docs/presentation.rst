@@ -72,7 +72,7 @@ Presentation
 The Horton stream order is the third most commonly used stream order in hydrology. It is based on a different idea 
 which takes into account the strokes and the Strahler stream order.
 Horton’s stream order applies to the stream as a whole and not according to the edges of the network. 
-The first step of its process is to define the strokes, which are CECILE. 
+The first step of its process is to define the strokes, which are sets of arcs that appear to be continuous (as in a straight line or curve). 
 The second step is to, according to the strokes and the Strahler stream order, define the Horton stream order for each stroke. 
 The main stroke is first to be set its Horton stream order which corresponds to its Strahler stream order, 
 and then each stroke is given a Horton stream order corresponding to its Strahler order. 
