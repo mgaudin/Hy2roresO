@@ -7,4 +7,4 @@ We also thank Guillaume Touya, head of the COGIT Research Unit at the Institut N
 
 Greetings to the Ecole Nationale des Sciences Géographiques for the working conditions provided.
 
-Finally, a thought to Nicolas, Luc, Marion, Alice, Jocelyn, Mattthieu, Hugo and most of the time Robin, that supported us during the whole development of this project.
+Finally, a thought to Nicolas, Luc, Marion, Alice, Jocelyn, Matthieu, Hugo and most of the time Robin, that supported us during the whole development of this project.
