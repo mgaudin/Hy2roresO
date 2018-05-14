@@ -44,7 +44,7 @@ The algorithm
 Classes
 ~~~~~~~~~~~~
 
-The algorithm sets 3 classes : *Edge*, *Node* and *Island*. Both of them have attributes that define them and that are useful for the good process of the algorithm.
+The algorithm sets 3 classes : *Edge*, *Node* and *Island*. All of them have attributes that define them and that are useful for the good process of the algorithm.
 
 .. figure:: ../_static/classes_Hy2roresOv1.0.png
    :align: center
@@ -99,7 +99,7 @@ Conditions to elaborate the strokes
 
 Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions [Touya 2007]_ :
  - the name of the outgoing edge exists and is exactly the same as one of its incoming edges
- - the incoming edge that has the highest flow (if it exists in the data)
+ - the incoming edge that has the highest flow (if it exists in the data). This condition is not handled in the algorithm.
  - one of the incoming stroke is more than 3 times longer than the other incoming strokes
  - the stroke that creates an angle that is the closest to 180 degrees (more continuous)
 After defining the strokes, we can attribute for each edges of a stroke the same Horton stream order, which is the maximum of the Strahler order of the edges of the stroke. The main stroke gets therefore the maximum Strahler stream order, and so one until each stroke is treated.
