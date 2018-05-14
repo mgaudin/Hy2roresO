@@ -19,3 +19,8 @@ Michaël Gaudin (michael.gaudin@ensg.eu)
 Alice Gonnaud (alice.gonnaud@ensg.eu)
 
 Guillaume Vasseur (guillaume.vasseur@ensg.eu)
+
+
+Existing plugin for QGIS :
+* QGISStrahler https://github.com/ArMoraer/QGISStrahler
+* GRASS
