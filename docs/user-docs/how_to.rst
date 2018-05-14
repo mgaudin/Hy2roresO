@@ -1,7 +1,13 @@
 How to...?
 ==========
 
+Preparation of the process
+-------------
+
+
 To use Hy2roresO properly, make sure you have opened the vector layer corresponding to the network you want to analyse.
+Your layer must not contain artificial networks (such as irrigation zones), and must not have duplicated geometries, so the algorithm to run properly. If you have duplicated geometries in your layer, please refer on the Documentation_ from QGIS to eliminate them.
+ .. _Documentation: https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/vector_general_tools/deleteduplicategeometries.html
 
 To open the Hy2roresO plugin, go to the menu Extension, then find Hy2roresO and open it. You can also find it thanks to its icon : ICON
 
