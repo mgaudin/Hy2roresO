@@ -2,7 +2,8 @@ Documentation
 =========
 
 .. py:class:: Hydroreso(self, test)
-    """Docstring for class Foo.
+    """
+    Docstring for class Foo.
 
     This text tests for the formatting of docstrings generated from output
     ``sphinx.ext.autodoc``. Which contain reST, but sphinx nests it in the
@@ -45,7 +46,7 @@ Classes
 
 The algorithm sets 3 classes : *Edge*, *Node* and *Island*. Both of them have attributes that define them and that are useful for the good process of the algorithm.
 
-.. figure:: ../_static/class_diagram.png
+.. figure:: ../_static/classes_Hy2roresOv1.0.png
    :align: center
    
    Class diagram of the algorithm
