@@ -2,7 +2,7 @@ Hy2roresO
 =========
 
 `Hy2roresO`_ is a QGIS plugin able to compute various hierarchisation stream orders,
-such as Strahler order, Horton order or Shreve order, from an input shapefile.
+such as Strahler order, Horton order or Shrieve order, from an input shapefile.
 
 The code is open source, and `available on GitHub`_.
 
@@ -36,7 +36,8 @@ Information about development is also available:
 .. toctree::
    :maxdepth: 2
    :caption: Developer Documentation
-
+   
+   dev-docs/approach_strategy
    dev-docs/docs
    dev-docs/perspectives
 
