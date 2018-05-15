@@ -20,6 +20,11 @@ Step 1 : essential parameters
 
 You will find yourself in front of a window :
 
+.. figure:: ../_static/home.png
+   :align: center
+   
+   First window of the plugin
+
 The first parameters you must enter are :
  - the layer which you want to apply the algorithm
  - the stream orders you want to get thanks to the plugin : Strahler, Shreve and Horton (you can see the description of each of these orders here_)
@@ -55,14 +60,26 @@ During the algorithm
 ~~~~~~~~~~~~~~
 
 
-During the process of the algorithm, if you have chosen to authorize the algorithm to reverse some streams, you may find this type of window : WINDOW
+During the process of the algorithm, if you have chosen to authorize the algorithm to reverse some streams, you may find this type of window : 
+
+.. figure:: ../_static/dialog.png
+   :align: center
+   
+   Window asking if the user wants to reverse a feature
 
 You can reverse the feature which is being processed or not. You can also, according to the number of streams that could be reversed, ask to reverse them all or to let them all at their initial state.
+
+*Note : The algorithm does not modify the layer in itself by reversing some features, it is only for its good process !*
 
 End of the algorithm
 -----------------
 
-The algorithm is finished when you meet this final window : WINDOW 
+The algorithm is finished when you meet this final window : 
+
+.. figure:: ../_static/sucess.png
+   :align: center
+   
+   Final window
 
 *Note : Do not freak out if QGIS do not respond during the process, since two steps are particularly long : the island detection and the update of the layer with the writing of the new fields.*
 
