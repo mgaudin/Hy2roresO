@@ -28,8 +28,8 @@ You will find yourself in front of a window :
    First window of the plugin
 
 The first parameters you must enter are :
- - the layer which you want to apply the algorithm
- - the stream orders you want to get thanks to the plugin : Strahler, Shreve and Horton (you can see the description of each of these orders here_)
+ - the layer on which you want to apply the algorithm
+ - the stream orders you want to get thanks to the plugin: Strahler, Shreve and Horton (you can see the description of each of these orders here_)
  .. _here: ../user-docs/presentation.html
 
 Click on **Next** to go to the next parameters.
@@ -37,7 +37,7 @@ Click on **Next** to go to the next parameters.
 Step 2 : optional parameters 
 ---------------
 
-You can now enter more optional parameters to specify the names of the fields corresponding to the **name of the river**, its **flow**, the field corresponding to the **initial altitude** and the one corresponding to the **final altitude** of each section of the network.
+You can now enter more optional parameters to specify the names of the fields corresponding to the **name of the river**, the **initial altitude** and the **final altitude** of each section of the network.
 
 These parameters are optional : if they are not specified, the algorithm will still run, but may be less efficient because these parameters can be a key for a better hierarchisation.
 
@@ -47,16 +47,15 @@ Step 3 : process and output
 ----------------
 
 On this window you can :
- - authorize the algorithm to reverse streams that may not be entered well and therefore cause some mistakes in the attribution of the orders (checked initially)
- - add a boolean field *reversed* to the layer you are applying the algorithm on, if during the algorithm some streams have been reversed (checked initially)
+ - authorize the algorithm to reverse streams that may not be entered well and therefore cause some mistakes in the attribution of the orders; reversed streams are reversed for the computation but the input layer remains unchanged (checked initially)
+ - add a boolean field *reversed* to the layer you are applying the algorithm on, it indicates whether the streams were reversed during the algorithm (checked initially)
  - save the output layer, and choose the path where you want to save this layer
- - add the layer to the project instead of updating the input layer
 
-Once you have finished, you can click on **Next** to get more informations about the elaboration of the plugin.
+Once you have finished, you can click on **Next** for more information about the elaboration of the plugin.
 
 You can finally click on **OK** to run the algorithm.
 
-*Note : You can click on OK right from the start once you have selected a layer and at least one order to calculate. The algorithm will run with all the next parameters and options being entered as they are initially. You can also come back to the previous step whenever you want by clickin on Previous*
+*Note : You can click on OK right from the start once you have selected a layer and at least one order to calculate. The algorithm will run with the default settings. You can also come back to the previous step whenever you want by clicking on Previous.*
 
 During the algorithm
 ~~~~~~~~~~~~~~
@@ -69,9 +68,9 @@ During the process of the algorithm, if you have chosen to authorize the algorit
    
    Window asking if the user wants to reverse a feature
 
-You can reverse the feature which is being processed or not. You can also, according to the number of streams that could be reversed, ask to reverse them all or to let them all at their initial state.
+You can reverse the feature which is being processed or not. You can also ask to reverse them all or to let them all at their initial state, knowing the number of streams that could be reversed.
 
-*Note : The algorithm does not modify the layer in itself by reversing some features, it is only for its good process !*
+*Note : The algorithm does not modify the layer in itself by reversing some features, it is only for its good process!*
 
 End of the algorithm
 -----------------
@@ -83,5 +82,5 @@ The algorithm is finished when you meet this final window :
    
    Final window
 
-.. note:: Do not panic if QGIS *does not respond* during the process, since two steps are particularly long : the island detection and the update of the layer with the writing of the new fields.
+.. note:: Do not panic if QGIS *does not respond* during the process, since two steps are particularly long : the island detection and the update of the layer with the writing of the new fields. The plugin is still running.
 
