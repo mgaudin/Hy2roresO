@@ -15,6 +15,12 @@ Simple network
 
 In former plugins processing the different orders at stake, this configuration has never been a problem, and Hy2roresO also delivers a right result for these simple networks.
 
+   +------------------------------------------------------------+-----------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_arbre_strahler.png |  .. image:: ../_static/results/Hy2roresO_arbre_shreve.png |
+   +============================================================+===========================================================+
+   |        Strahler stream order on a simple network           |        Shreve stream order on a simple network            |
+   +------------------------------------------------------------+-----------------------------------------------------------+
+
 Lonely island
 ------------------
 
