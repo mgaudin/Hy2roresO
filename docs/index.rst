@@ -37,7 +37,6 @@ Information about development is also available:
    :caption: Developer Documentation
 
    dev-docs/docs
-   dev-docs/settings
    dev-docs/perspectives
 
 .. _about-docs:
