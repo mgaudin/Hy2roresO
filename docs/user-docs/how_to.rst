@@ -6,10 +6,10 @@ Preparation of the process
 
 
 To use Hy2roresO properly, make sure you have opened the vector layer corresponding to the network you want to analyse.
-Your layer must not contain artificial networks (such as irrigation zones), and must not have duplicated geometries, so the algorithm to run properly. If you have duplicated geometries in your layer, please refer on the Documentation_ from QGIS to eliminate them.
+Your layer must not contain artificial networks (such as irrigation zones), and must not have duplicated geometries, for the algorithm to run properly. If you have duplicated geometries in your layer, please refer to the Documentation_ from QGIS to eliminate them.
  .. _Documentation: https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/vector_general_tools/deleteduplicategeometries.html
  
-The output of the plugin will either be the input layer with new fields corresponding to the different orders or a new layer with all the fields from the input layer and the fields created through the algorithm.
+The output of the plugin is the input layer with new fields corresponding to the different orders.
 
 To open the Hy2roresO plugin, go to the *Extension* menu, then find Hy2roresO and open it. You can also find it thanks to its icon : |icon|
 
