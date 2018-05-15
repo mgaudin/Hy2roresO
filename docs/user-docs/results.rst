@@ -62,3 +62,9 @@ Hy2roresO handles every edge of the network, while previous plugins struggled ma
    +-----------------------------------------------------------+------------------------------------------------------------+
    | .. image:: ../_static/results/Hy2roresO_tout_horton.png   | Horton stream order on a whole network                     |
    +-----------------------------------------------------------+------------------------------------------------------------+
+
+Comparison between the three existing plugins
+------------------
+
+There are lots of differences between the three plugins.
+Here is a PDF file comparing them :download:`pdf <doc/Comparison_plugins_order.pdf>`.
