@@ -62,9 +62,11 @@ Changes of direction of streams
 
 A method was created to change the direction of the streams. It is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
 
-The first step of the method is to compare the altitude of the streams. If the initial altitude of the stream is lower than the final altitude, then the algorithm proposes to the user to change the direction of the stream. 
-	
-The second step is to propose to the user to reverse streams that may be irrelevant seeing the incoming and outgoing streams from its start and end nodes. The user can then also reverse them.
+There are two criterias that can detect wrong directions from streams:
+* If there is an incoherence in the altitudes (if the beginning altitude is lower than the end altitude)
+* If there are, for a node with a degree different to 1, only incoming edges or only outgoing edges. If so, the algorithm detects them and will propose to reverse only some of them so as to get a better hierarchisation.
+
+Then the algorithm proposes to the user to change the directions of the streams it has detected. The user can therefore reverse them or not manually or automatically thanks to the plugin during the process.
 
 *Note : Changing the direction of the stream will not change the geometry in itself : it will only create an attribute and a column reversed that will be used throughout the process of the algorithm.*
 
@@ -102,7 +104,13 @@ Each source gets an identifier of stroke. Then, arriving in an intersection (nod
  - the incoming edge that has the highest flow (if it exists in the data). This condition is not handled in the algorithm.
  - one of the incoming stroke is more than 3 times longer than the other incoming strokes
  - the stroke that creates an angle that is the closest to 180 degrees (more continuous)
+
 After defining the strokes, we can attribute for each edges of a stroke the same Horton stream order, which is the maximum of the Strahler order of the edges of the stroke. The main stroke gets therefore the maximum Strahler stream order, and so one until each stroke is treated.
+
+When handling an island, the stroke is calculated according to the conditions of name and length of the incoming strokes. The island is isolated and the outgoing edge is set to be attributed a stroke identifier from one of the incoming edges.
+Then, every edge defining the island is given the identifier that was given to the outgoing edge. The island is completely part of the stroke this way, which was one of our suppositions (the island is there seen as a node).
+
+When there is a delta or more than one outgoing edge from an island, the stroke is determined as the same stroke from the incoming edge. 
 
 .. [TOUYA2007] http://recherche.ign.fr/labos/cogit/publiCOGITDetail.php?idpubli=4181&portee=labo&id=1&classement=date&duree=100&nomcomplet=Touya%20Guillaume&annee=2007&principale=
 
