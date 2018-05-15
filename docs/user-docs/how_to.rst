@@ -15,7 +15,7 @@ To open the Hy2roresO plugin, go to the *Extension* menu, then find Hy2roresO an
 
 .. |icon| image:: ../_static/icon.png
 
-*Note : You do not need to be in editing mode to use Hy2roresO, it occurs automatically by processing.*
+.. note:: You do not need to be in editing mode to use Hy2roresO, it occurs automatically by processing.
 
 Step 1 : essential parameters
 -------------
@@ -83,5 +83,5 @@ The algorithm is finished when you meet this final window :
    
    Final window
 
-*Note : Do not freak out if QGIS do not respond during the process, since two steps are particularly long : the island detection and the update of the layer with the writing of the new fields.*
+.. note:: Do not panic if QGIS *does not respond* during the process, since two steps are particularly long : the island detection and the update of the layer with the writing of the new fields.
 
