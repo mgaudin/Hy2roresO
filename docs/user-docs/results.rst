@@ -15,23 +15,50 @@ Simple network
 
 In former plugins processing the different orders at stake, this configuration has never been a problem, and Hy2roresO also delivers a right result for these simple networks.
 
-   +------------------------------------------------------------+-----------------------------------------------------------+
-   | .. image:: ../_static/results/Hy2roresO_arbre_strahler.png |  .. image:: ../_static/results/Hy2roresO_arbre_shreve.png |
-   +============================================================+===========================================================+
-   |        Strahler stream order on a simple network           |        Shreve stream order on a simple network            |
-   +------------------------------------------------------------+-----------------------------------------------------------+
+   +------------------------------------------------------------+------------------------------------------------------------+   
+   | .. image:: ../_static/results/Hy2roresO_arbre_strahler.png | Strahler stream order on a simple network                  |
+   +------------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_arbre_shreve.png   | Shreve stream order on a simple network                    |
+   +------------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_arbre_horton.png   | Horton stream order on a simple network                    |
+   +------------------------------------------------------------+------------------------------------------------------------+
 
+   
 Lonely island
 ------------------
 
 Hy2roresO handles lonely island so as the outgoing edge has the same order than the incoming edge, which was not the case in former plugins. This way, the orders do not increment dramatically each time an island is met by the algorithm.
+
+   +-------------------------------------------------------------+------------------------------------------------------------+   
+   | .. image:: ../_static/results/Hy2roresO_simple_strahler.png | Strahler stream order on a simple island                   |
+   +-------------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_simple_shreve.png   | Shreve stream order on a simple island                     |
+   +-------------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_simple_horton.png   | Horton stream order on a simple island                     |
+   +-------------------------------------------------------------+------------------------------------------------------------+
 
 Complex island
 -------------------
 
 A succession of adjacent islands is what we call a complex island. When processing previous plugins, this part has always been an issue. With Hy2roresO, it is handled correctly so as the orders do not increase dramatically too and stay right.
 
+   +---------------------------------------------------------------+------------------------------------------------------------+   
+   | .. image:: ../_static/results/Hy2roresO_complexe_strahler.png | Strahler stream order on a complex island                  |
+   +---------------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_complexe_shreve.png   | Shreve stream order on a complex island                    |
+   +---------------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_complexe_horton.png   | Horton stream order on a complex island                    |
+   +---------------------------------------------------------------+------------------------------------------------------------+
+
 Whole network
 ------------------
 
 Hy2roresO handles every edge of the network, while previous plugins struggled managing to process them all.
+
+   +-----------------------------------------------------------+------------------------------------------------------------+   
+   | .. image:: ../_static/results/Hy2roresO_tout_strahler.png | Strahler stream order on a whole network                   |
+   +-----------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_tout_shreve.png   | Shreve stream order on a whole network                     |
+   +-----------------------------------------------------------+------------------------------------------------------------+
+   | .. image:: ../_static/results/Hy2roresO_tout_horton.png   | Horton stream order on a whole network                     |
+   +-----------------------------------------------------------+------------------------------------------------------------+
