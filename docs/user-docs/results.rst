@@ -4,7 +4,7 @@ Results
 Hy2roresO handles a multitude of configurations in hydrological networks, which is a novelty comparing to former plugins from GRASS or QGIS which were less precise or even wrong.
 
 To begin with, the "Strahler" QGIS plugin handled, as its name recalls, only the Strahler stream orders of a network by selecting its sink, with several mistakes when processing in specific configurations.
-The GRASS plugin (v.stream.order) handled the Strahler and Shreve stream orders, however the results were not good. There was also a section to handle the Horton stream order, but it was not coded.
+The GRASS plugin (v.stream.order) handled the Strahler and Shreve stream orders, however the results were not good. There was also a section to handle the Horton stream order, but it was not implemented.
 
 Hy2roresO gives the input layer Strahler, Shreve and Horton stream orders and also takes into account wrong directions from some edges and computation of the strokes, which is a major improvement comparing to what existed before.
 
