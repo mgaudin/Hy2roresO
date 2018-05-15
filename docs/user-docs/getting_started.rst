@@ -1,17 +1,14 @@
 Getting Started
 ===============
 
-This document will show you how to get up and running with **Hy2roresO**.
-You will have your docs imported on Read the Docs in 5 minutes,
-displayed beautifully for the world.
+This page will explain you how to get up and running with **Hy2roresO**.
 
-If you are already using Sphinx or Markdown for your docs, skip ahead to
-:ref:`import-docs`.
+If you already have installdd the plugin, skip ahead to :ref:`presentation`.
 
 A quick introduction
----------------
+--------------------
 
-You have two options for formatting your documentation:
+This is a quick introduction about our plugin. Please refer to another page for more details.
 
 Installing the plugin
 ---------------------
@@ -33,7 +30,7 @@ If you are adventurous and would like to get the latest code of the plugin, you 
 The :doc:`contribute` page has more information on getting in touch.
 
 Other stuff to remove
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Assuming you have Python_ already, `install Sphinx`_::
 
