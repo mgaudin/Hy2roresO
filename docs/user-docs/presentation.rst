@@ -28,7 +28,7 @@ The Strahler stream order of a sink is the highest one of the river, and does us
 Hypotheses
 ~~~~~~~~~~
 
-Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
+Some hypotheses were made during the computing of the plugin. For more details about these hypotheses, 
 please refer to the Programmer Documentation.
 
 .. figure:: ../_static/strahler.png
@@ -55,7 +55,7 @@ and is then largely independent of an exact knowledge of the upper and lower cou
 Hypotheses
 ~~~~~~~~~~
 
-Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
+Some hypotheses were made during the computing of the plugin. For more details about these hypotheses, 
 please refer to the Programmer Documentation.
 
 .. figure:: ../_static/shreve.png
@@ -81,7 +81,7 @@ and then each stroke is given a Horton stream order corresponding to its Strahle
 Hypotheses
 ~~~~~~~~~~
 
-Some hypothesis were made during the computing of the plugin. For more details about these hypothesis, 
+Some hypotheses were made during the computing of the plugin. For more details about these hypotheses, 
 please refer to the Programmer Documentation.
 
 .. figure:: ../_static/horton.png
