@@ -29,6 +29,7 @@ Information about development is also available:
    user-docs/presentation
    user-docs/getting_started
    user-docs/how_to
+   user-docs/results
 
 .. _dev-docs:
 
