@@ -63,6 +63,16 @@ Hy2roresO handles every edge of the network, while previous plugins struggled ma
    | .. image:: ../_static/results/Hy2roresO_tout_horton.png   | Horton stream order on a whole network                     |
    +-----------------------------------------------------------+------------------------------------------------------------+
 
+Computation of the strokes
+------------------
+
+Unlike the two other plugins, Hy2roresO deals with the strokes too, and computes them. Therefore, we are able to compute the Horton stream order on networks too. Thaks to this order, one can see the main branches according to this order, as shown in this result obtained thanks to Hy2roresO :
+
+.. figure:: ../_static/Hy2roresO_Horton.png
+   :align: center
+   
+   Application of the Horton stream order on a network. The bolder the stroke the higher the Horton order.
+
 Comparison between the three existing plugins
 ------------------
 
