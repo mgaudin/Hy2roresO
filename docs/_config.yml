@@ -1,1 +1,3 @@
 theme: jekyll-theme-minimal
+logo: ../_static/logo.png
+show_downloads: true
