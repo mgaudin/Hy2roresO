@@ -67,4 +67,4 @@ Comparison between the three existing plugins
 ------------------
 
 There are lots of differences between the three plugins.
-Here is a PDF file comparing them :download:`pdf <doc/Comparison_plugins_order.pdf>`.
+Here is a PDF file comparing them all :download:`pdf <doc/Comparison_plugins_order.pdf>`
