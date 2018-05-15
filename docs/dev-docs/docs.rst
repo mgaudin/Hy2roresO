@@ -63,8 +63,8 @@ Changes of direction of streams
 A method was created to change the direction of the streams. It is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
 
 There are two criterias that can detect wrong directions from streams:
-* If there is an incoherence in the altitudes (if the beginning altitude is lower than the end altitude)
-* If there are, for a node with a degree different to 1, only incoming edges or only outgoing edges. If so, the algorithm detects them and will propose to reverse only some of them so as to get a better hierarchisation.
+ * If there is an incoherence in the altitudes (if the beginning altitude is lower than the end altitude)
+ * If there are, for a node with a degree different to 1, only incoming edges or only outgoing edges. If so, the algorithm detects them and will propose to reverse only some of them so as to get a better hierarchisation.
 
 Then the algorithm proposes to the user to change the directions of the streams it has detected. The user can therefore reverse them or not manually or automatically thanks to the plugin during the process.
 
