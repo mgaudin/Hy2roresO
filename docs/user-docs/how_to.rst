@@ -39,6 +39,11 @@ Step 2 : optional parameters
 
 You can now enter more optional parameters to specify the names of the fields corresponding to the **name of the river**, the **initial altitude** and the **final altitude** of each section of the network.
 
+.. figure:: ../_static/optional_parameters.png
+   :align: center
+ 
+   Second window of the plugin
+
 These parameters are optional : if they are not specified, the algorithm will still run, but may be less efficient because these parameters can be a key for a better hierarchisation.
 
 Click on **Next** to get to the next step.
@@ -50,6 +55,11 @@ On this window you can :
  - authorize the algorithm to reverse streams that may not be entered well and therefore cause some mistakes in the attribution of the orders; reversed streams are reversed for the computation but the input layer remains unchanged (checked initially)
  - add a boolean field *reversed* to the layer you are applying the algorithm on, it indicates whether the streams were reversed during the algorithm (checked initially)
  - save the output layer, and choose the path where you want to save this layer
+ 
+.. figure:: ../_static/output_parameters.png
+   :align: center
+ 
+   Third window of the plugin
 
 Once you have finished, you can click on **Next** for more information about the elaboration of the plugin.
 
