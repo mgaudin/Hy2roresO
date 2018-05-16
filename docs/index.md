@@ -18,6 +18,7 @@ Opening the plugin, you will have to choose essential parameters for the process
 You can then choose optional parameters to try to get a more realistic hierarchisation of your network. You can finally save the output layer and choose to reverse some edges that may not have the good direction.
 During the process, you may be asked if you want to reverse some edges in case you checked the corresponding box in the interface.
 
+#### The results
 After processing, you will be able to display the orders of your network, from Strahler to Horton and Shreve.
 Here is an example of how the algorithm handles the Strahler order when arriving in a complex island (succession of adjacent islands) :
 
