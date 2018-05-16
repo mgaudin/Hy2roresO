@@ -8,7 +8,7 @@ Hy2roresO is a QGIS plugin developed in Python 3.6 for QGIS 3.0.
 The implemented algorithm is iterative. The algorithm goes through the river network starting from the sources and down to the sinks.
 The orders computation relies on instances of classes specifically designed for the plugin. They will be detailed further in the documentation.
 
-**This section aims to present the main hypotheses** we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (see the Introduction of the User documentation_ about the Strahler, Shreve and Horton algorithms). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
+**This section aims to present the main hypotheses** we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (*see the Introduction of the User documentation_ about the Strahler, Shreve and Horton algorithms*). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
 .. _documentation: ../user-docs/presentation.html
 
 Input data
@@ -86,6 +86,7 @@ The edges that belong to islands are detected as such by the algorithm, and will
    Let's underline that underground features are not differentiated from features on other levels, and thus might induce faces that are not islands in reality. Once again, be aware of man-made structures in the network.
 
 Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or the belong to a complex island. Hence the following steps:
+
  * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
  * Detect the edges that belong to the islands. For this step we studied the topological relations between the edges and the islands. We defined our own topological request using a QGIS method *relate()* and DE-9IM matrices.
  
@@ -101,36 +102,39 @@ Successive islands are yet another type of topological relation between islands,
 
  * The lists of edges belonging to complex (or single) islands that are successive are concatenated, so that the orders computation method will read the edges as making up one island and the appropriate process will be applied to the whole island.
  
-Orders
+Orders computation
 ~~~~~~~~~~~~
 
 The user can choose to compute the Strahler order, the Shreve order and/or the Horton order in the launcher.
 The orders are defined in the user documentation_. 
-The algorithm computes the orders, store them as attributes of the Edge objects specifically instantiated and add a column for each chosen order to the input layer. Computing meaningful orders requires to take the specificities of the network structure into consideration.
  .. _documentation: ../user-docs/presentation.html
  
+The algorithm computes the orders, store them as attributes of the Edge objects specifically instantiated and add a column for each chosen order to the input layer. 
+ 
+Computing meaningful orders requires to take the specificities of the network structure into consideration. Islands are processed specifically. We present in this section some hypotheses we made and the process we chose for cases handled distinctively.
  
 
-Strahler stream order
+Strahler, Shreve and Horton stream orders
 ++++++++++++++++
 
-For each edge is calculated a Strahler order. It follows the rules defined for this order. 
-When arriving in an island, the code first checks if every incoming edge in the island has been treated. When so, it calculates the Strahler stream order of the outgoing edge of the island according the orders from these incoming edges. It finally attributes to the edges defining the island an order HOW
-IMAGES
+The algorithm starts from the sources and travels through the river network down to the sinks.
 
-Shreve stream order
+The main steps of the algorithm are the following:
+ * The iterative process is initialized by setting the Strahler and Shreve orders of the source edges to 1. Each source edge also defines a new stroke (except sources that are in islands).
+ * For each edge, if all the incoming edges have already been processed, the edge can be processed.
+ * If the edge is not in an island, its orders are computed following the rules defined for each order. Its stroke is computed by selecting which of its upstream edges the edge continues the best *(see more on the strokes below)*.
+ * If the edge is in an island, all the edges of the island the edge belongs to are processed. Then all the outgoing edges of the island are processed. *(See more about that below)*
+  * The Horton order is computed after all the edges have been processed for Strahler order computation. Indeed the Horton order is based on the Strahler value and its computation needs all the Strahler orders to be computed and all the strokes to be built beforehand.
+
+The algorithm runs while there are edges left to process, or until the number of edges to process does not decrease between two iterations (meaning that the edges left to process can not be processed). Edges cannot be processed if they form a loop, as each edge needs all the other edges of the loop to be processed first before they can be processed.
+
+ * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream of the loop that can finally be computed now their incoming edges have been processed.
+
+Stream orders in islands
 ++++++++++++++++
-
-For each edge is also calculated a Shreve order, it follows the rules defined for this order and the same method as for the attribution of the Strahler stream order.
-IMAGES
-
-Horton stream order
-++++++++++++++++
-
-For each edge can also be calculated the Horton stream order. To compute it, we need to define the strokes of the network.
 
 Conditions to elaborate the strokes
-###################
+++++++++++++++++
 
 Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions [TOUYA2007]_ :
  - the name of the outgoing edge exists and is exactly the same as one of its incoming edges
