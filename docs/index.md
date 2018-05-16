@@ -22,7 +22,7 @@ During the process, you may be asked if you want to reverse some edges in case y
 After processing, you will be able to display the orders of your network, from Strahler to Horton and Shreve.
 Here is an example of how the algorithm handles the Strahler order when arriving in a complex island (succession of adjacent islands) :
 
-![alternativetext](asset/results/Hy2roresO_complexe_strahler.png)
+![alternativetext](asset/Hy2roresO_complexe_strahler.png)
 
 Finally, this plugin can process in every hydrological network, with every natural configurations. With the orders, we can access to new information about the network under study. Here is an example of the Horton example, which can display the strokes and so the most important rivers in a network (the bolder the more important) :
 
