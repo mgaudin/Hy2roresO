@@ -6,7 +6,7 @@ Hy2roresO deals with a whole bunch of cases that can happen with natural hydrolo
 * One thing that can be done is to create fictive network inside the islands, for example by using a skeleton of the geometry of the island. This could for example improve the definition of strokes entering and exiting an island, especially it the island is curved. It also would grant the strokes a linear geometry (without the forks due to islands), which is commonly expected of a stroke.
 .. figure:: ../_static/skeleton.png
    :align: center
-   :scale: 50 %
+   :scale: 20 %
 
 
 * The method *interpolateAngle()* from the class **QgsGeometry** was briefly studied to better deal with curved islands by interpolating the angle between the island and its incoming edges, or the island and its outgoing edges. Maybe this could lead to a better process for the strokes. As for now, there is indeed no consideration of angle between the island and its connected edges to define the strokes, which is a major weakness. The angle between an edge and an island is a notion yet to define. 
