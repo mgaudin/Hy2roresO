@@ -1,15 +1,17 @@
-.. py:class::  Hydroreso(self):
-    def run_process(self):
-        """
+.. py:class::  Hydroreso(self)
+    .. py:method:: run_process(self)
+    
         Do the whole stuff
-        """
+
  
-.. py:class::  Edge(self):
+.. py:class::  Edge(self)
+
    Class of an Edge of the river network.
    Instantiated with attributes of the features of the layer of the network.
    
    
-    def __init__(self, geom, id_edge, node_start, node_end):
+    .. py:method:: __init__(self, geom, id_edge, node_start, node_end)
+    
         # Geometry of the feature (line)
         self.geom = geom
         # ID of the edge (same as the ID of the feature; integer)
@@ -19,28 +21,29 @@
         # End node of the edge
         self.node_end = node_end
 
-    def copy_edge(self):
-        """
+    .. py:method:: copy_edge(self)
+
         Copy an Edge object.
         Create an Edge object that has the same attributes.
         
         :return: Copy of the edge
         :rtype: Edge object
-        """
+
         
-class Node:
-    """
+.. py:class::  Node(self)
+
     Class of a Node of the river network.
     Instantiated with attributes of the features of the layer of the network.
-    """
-    def __init__(self, geom, id_node):
+
+    .. py:method::  __init__(self, geom, id_node)
+    
         # Geometry of the feature (point)
         self.geom = geom
         # ID of the node (ID of one of its connected edges and number 1 or 2 concatenated)
         self.id_node = id_node
         
-    def copy_node(self):
-        """
+    .. py:method::  copy_node(self)
+
         Copy a Node object.
         Create a Node object that has the same attributes.
         
@@ -48,43 +51,46 @@ class Node:
         :rtype: Node object
 
 
-class Island:
-    """
+.. py:class::  Island(self)
+
     Class of an Island of the river network.
     Instantiated with the edges of the island.
     """
-    def __init__(self, island_edges):
+    .. py:method::  __init__(self, island_edges)
+    
         # Edges that make up the island (Edge objects)
         self.edges = island_edges
         
-    def copy_island(self):
+    .. py:method::  copy_island(self)
+    
         Copy an Island object.
         Create an Island object that has the same attributes.
         
         :return: Copy of the island
         :rtype: Island object
         
-    def compute_edges_in_out(self):
-        """
+    .. py:method::  compute_edges_in_out(self)
+
         Compute the incoming and outgoing edges of the island.
         Set attributes edges_in and edges_out from the edges of the island and
         their connections to the network.
-        """
+
     
-    def compute_edges_in(self):
-        """
+    .. py:method::  compute_edges_in(self):
+
         Compute the incoming edges of the island.
         Set attribute edges_in from the edges of the island and their 
         connections to the network.
-        """
         
         
-    def compute_edges_out(self):
-        """
+    .. py:method::  compute_edges_out(self):
+
         Compute the outgoing edges of the island.
         Set attribute edges_out from the edges of the island and their 
         connections to the network.
-        """
+
+
+---------------------
 
 .. py:function:: create_edges_nodes(features, name_column, alt_init_column, alt_final_column)
 
@@ -110,6 +116,7 @@ class Island:
     :return: list of all the edges, list of all the nodes making up the river network
     :rtype: list of Edge objects, list of Node objects
 
+
 .. py:function:: set_edges_connected_nodes(nodes, edges)
 
     Fill the lists of incoming and outgoing edges of the input nodes 
@@ -123,9 +130,9 @@ class Island:
     
     :param edges: list of all the edges making up the river network
     :type edges: list of Edge objects
-    """
+
  
-def create_islands(streams_in_islands):
+.. py:function:: create_islands(streams_in_islands)
     """
     Instanciation of Island objects from the list of the edges that make up the
     island.
@@ -137,8 +144,9 @@ def create_islands(streams_in_islands):
     :type streams_in_islands: list of lists of Edge objects
     """
             
+CORRECT EDGE DIRECTIONS
+-----------------------
 
-# ________ CORRECT EDGE DIRECTIONS ___________________________________________
 
 def test_direction(edges, nodes):
     """
