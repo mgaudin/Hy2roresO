@@ -13,7 +13,7 @@ Documentation : [http://hy2roreso.readthedocs.io](http://hy2roreso.readthedocs.i
 #### The plugin
 Opening the plugin, you will have to choose essential parameters for the process : the layer and the orders you want to generate.
 
-![alternativetext](asset/home.png)
+![alternativetext](asset/page1.png)
 
 You can then choose optional parameters to try to get a more realistic hierarchisation of your network. You can finally save the output layer and choose to reverse some edges that may not have the good direction.
 During the process, you may be asked if you want to reverse some edges in case you checked the corresponding box in the interface.
