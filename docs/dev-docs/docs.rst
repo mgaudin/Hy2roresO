@@ -19,24 +19,30 @@ Classes
    Instantiated with attributes of the features of the layer of the network.
    
    
-.. py:method:: Edge.__init__(self, geom, id_edge, node_start, node_end)
-    
-        # Geometry of the feature (line)
-        self.geom = geom
-        # ID of the edge (same as the ID of the feature; integer)
-        self.id_edge = id_edge
-        # Start node of the edge
-        self.node_start = node_start
-        # End node of the edge
-        self.node_end = node_end
+   .. py:method:: __init__(self, geom, id_edge, node_start, node_end)
+       
+       Constructor of the class
+       
+       :param geom: Geometry of the feature (line)
+       :type geom:
+       
+       :param id_edge: ID of the edge (same as the ID of the feature; integer)
+       :type id_edge:
+       
+       :param node_start: Start node of the edge
+       :type node_start:
+       
+       :param node_end: End node of the edge
+       :type node_end:
 
-.. py:method:: Edge.copy_edge(self)
 
-    Copy an Edge object.
-    Create an Edge object that has the same attributes.
+   .. py:method:: copy_edge(self)
 
-    :return: Copy of the edge
-    :rtype: Edge object
+       Copy an ``Edge`` object.
+       Create an ``Edge`` object that has the same attributes.
+
+       :return: Copy of the edge
+       :rtype: Edge object
 
 
 ---------------------
@@ -44,19 +50,23 @@ Classes
 
 .. py:class::  Node(self)
 
-    Class of a Node of the river network.
+    Class of a ``Node`` of the river network.
     Instantiated with attributes of the features of the layer of the network.
 
-.. py:method::  Node.__init__(self, geom, id_node)
+.. py:method::  __init__(self, geom, id_node)
 
-    # Geometry of the feature (point)
-    self.geom = geom
-    # ID of the node (ID of one of its connected edges and number 1 or 2 concatenated)
-    self.id_node = id_node
+       Constructor of the class
+       
+       :param geom: Geometry of the feature (point)
+       :type geom:
+       
+       :param id_node: ID of the node (ID of one of its connected edges and number 1 or 2 concatenated)
+       :type id_node:
+       
         
-.. py:method:: Node.copy_node(self)
+.. py:method:: copy_node(self)
 
-    Copy a Node object.
+    Copy a ``Node`` object.
     Create a Node object that has the same attributes.
 
     :return: Copy of the node
@@ -68,44 +78,53 @@ Classes
 
 .. py:class::  Island(self)
 
-    Class of an Island of the river network.
+    Class of an ``Island`` of the river network.
+    
     Instantiated with the edges of the island.
 
-.. py:method::  Island.__init__(self, island_edges)
+   .. py:method::  __init__(self, island_edges)
 
-    # Edges that make up the island (Edge objects)
-    self.edges = island_edges
+       Constructor of the class
+      
+       :param island_edges: Edges that make up the island (Edge objects)
+       :island_edges type:
 
-.. py:method::  Island.copy_island(self)
 
-    Copy an Island object.
-    Create an Island object that has the same attributes.
+   .. py:method::  copy_island(self)
 
-    :return: Copy of the island
-    :rtype: Island object
+       Copy an ``Island`` object.
+       
+       Create an ``Island`` object that has the same attributes.
 
-.. py:method::  Island.compute_edges_in_out(self)
+       :return: Copy of the island
+       :rtype: Island object
 
-    Compute the incoming and outgoing edges of the island.
-    Set attributes edges_in and edges_out from the edges of the island and
-    their connections to the network.
+
+   .. py:method::  compute_edges_in_out(self)
+
+       Compute the incoming and outgoing edges of the island.
+       
+       Set attributes edges_in and edges_out from the edges of the island and
+       their connections to the network.
 
     
-.. py:method::  Island.compute_edges_in(self):
+   .. py:method::  compute_edges_in(self)
 
-    Compute the incoming edges of the island.
-    Set attribute edges_in from the edges of the island and their 
-    connections to the network.
+       Compute the incoming edges of the island.
 
-
-.. py:method::  Island.compute_edges_out(self):
-
-    Compute the outgoing edges of the island.
-    Set attribute edges_out from the edges of the island and their 
-    connections to the network.
+       Set attribute edges_in from the edges of the island and their 
+       connections to the network.
 
 
----------------------
+   .. py:method::  compute_edges_out(self)
+
+       Compute the outgoing edges of the island.
+       
+       Set attribute edges_out from the edges of the island and their 
+       connections to the network.
+
+
+-----------------------------
 
 
 Instanciations of the classes
@@ -113,7 +132,8 @@ Instanciations of the classes
 
 .. py:function:: create_edges_nodes(features, name_column, alt_init_column, alt_final_column)
 
-    Instantiate all the Edge and Node objects that make up the river network.
+    Instantiate all the ``Edge`` and ``Node`` objects that make up the river network.
+    
     The name of the river and the altitudes are attributes of the objects 
     if the names of the columns are given in arguments.
     
@@ -153,7 +173,7 @@ Instanciations of the classes
  
 .. py:function:: create_islands(streams_in_islands)
 
-    Instanciation of Island objects from the list of the edges that make up the
+    Instanciation of ``Island`` objects from the list of the edges that make up the
     island.
     
     The instantiated objects are stored as attributes of the edges that belong 
@@ -229,7 +249,7 @@ Correct edges directions
     Reverse edges of the input list (call reverse(edge) method).
     
     :param edges_to_reverse: list of edges to reverse
-    :edges_to_reverse type: list of Edge objects
+    :type edges_to_reverse: list of Edge objects
     
     
 .. py:function:: edges_to_features(list_edges, input_layer)
@@ -262,12 +282,16 @@ Correct edges directions
     :rtype: list of Edge objects
 
 
+-----------------------------
+
+
 Sources and sinks
 -----------------
                
-.. py:function:: find_sources_sinks(edges):
+.. py:function:: find_sources_sinks(edges)
 
     Find source edges and sink edges of the network.
+    
     A source edge is an edge exiting a node that is only connected to this edge.
     A sink edge is an edge entering a node that is only connected to this edge.
     
@@ -276,6 +300,9 @@ Sources and sinks
     
     :return: list of source edges, list of sink edges
     :rtype: list of Edge objects, list of Edge objects
+
+
+-----------------------------
 
 
 Island detection
@@ -288,7 +315,7 @@ Island detection
     Return a list of lists of the edges that make up each island.
     
     :param stream_layer: layer of the river network
-    :type edges: QgsVectorLayer object
+    :type stream_layer: QgsVectorLayer object
     
     :param edges: list of all the edges that make up the river network
     :type edges: list of Edge objects
@@ -303,10 +330,10 @@ Island detection
         If there is no island, return None.
         
         :param input_layer: layer of the river network
-        :input_layer type: QgsVectorLayer object
+        :type input_layer: QgsVectorLayer object
         
         :param name: name of the layer if displayed
-        :name type: string
+        :type name: string
         
         :return: layer of faces of the network (islands, polygons)
         :rtype: QgsVectorLayer object
@@ -317,13 +344,13 @@ Island detection
     Create a Polygon layer with the input list of geometries (must be polygons).
     
     :param list_geom: list of polygons
-    :list_geom type: list of QgsGeometry
+    :type list_geom: list of QgsGeometry
     
     :param crs: the crs of the output layer
     :type crs: string (format Wkt)
     
     :param name: (optional) Name of the layer to display. Default = "temp"
-    :name type: string
+    :type name: string
     
     :return: layer of polygons
     :rtype: QgsVectorLayer object
@@ -334,7 +361,7 @@ Island detection
     Transform the input iterator into a list.
     
     :param iterator: the iterator to convert
-    :iterator type: iterator
+    :type iterator: iterator
     
     :return: the list of the values of the iterator
     :rtype: list
@@ -345,7 +372,7 @@ Island detection
     Aggregate the geometries of the input list of features into one geometry.
     
     :param listFeatures: features to aggregate
-    :listFeatures type: list of QgsFeatures objects
+    :type listFeatures: list of QgsFeatures objects
     
     :return: the aggregated geometry
     :rtype: QgsGeometry object
@@ -356,7 +383,7 @@ Island detection
     Transform the input multi-polygon into a list of single-polygons.
     
     :param geom: multi-polygon
-    :geom type: QgsGeometry object
+    :type geom: QgsGeometry object
     
     :return: list of the single geometries
     :rtype: list of QgsGeometry objects
@@ -368,10 +395,10 @@ Island detection
     The topology is defined by DE-9IM matrices.
     
     :param stream_layer: the layer of the river network
-    :stream_layer type: QgisVectorLayer object (lines)
+    :type stream_layer: QgisVectorLayer object (lines)
     
     :param island_layer: the layer of the islands 
-    :island_layer type: QgisVectorLayer object (polygons)
+    :type island_layer: QgisVectorLayer object (polygons)
     
     :return: list of lists of all the streams that make up the islands
     :rtype: list of lists of QgisFeatures objects
@@ -380,6 +407,7 @@ Island detection
 .. py:function:: merge_successive_islands_streams(streams_in_island_list)
 
     Compute successive islands.
+    
     Successive islands are islands that are not adjacent, and there is no 
     edge between them (that does not belong to an island).
     The topology is defined by a DE-9IM matrix.
@@ -388,8 +416,7 @@ Island detection
     Return the list of lists of features (edges) of the islands.
     
     :param streams_in_island_list: list of lists of all the streams that
-                                   make up the islands
-                                   
+                                   make up the islands             
     :type streams_in_island_list: list of lists of QgisFeatures objects
     
     :return: list of lists of all the streams that make up the islands, 
@@ -407,9 +434,10 @@ Island detection
     :return: list of merged lists
     :rtype: list of lists
 
-                       
-    
-    
+
+------------------------
+
+
 Orders
 ------    
 
@@ -505,7 +533,8 @@ Orders
 
 .. py:function:: is_upstream_processed(incoming_edges, edges_to_process)
 
-    Check if all incoming edges have been processed. 
+    Check if all incoming edges have been processed.
+    
     Return True if processed.
     
     :param incoming_edges: list of edges to check (incoming edges of a current edge)
@@ -519,6 +548,7 @@ Orders
 
     Compute stream orders: Strahler, Shreve and / or Horton, according to the
     selection of the user.
+    
     The computed orders are attributes of the Edge objects.
     
     :param edges: list of all the edges making up the river network
@@ -566,6 +596,7 @@ Orders
 .. py:function:: process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_strokes_in_island)
 
     Process edges of a loop.
+    
     Their order and their stroke take the same value. The orders are computed 
     with orders of the incoming edges of the edges of the loop that are known 
     (regular Strahler or Shreve, only on already processed incoming edges).
@@ -611,6 +642,7 @@ Orders
 .. py:function:: compute_horton(dict_strokes)
 
     Compute the Horton order using the input strokes.
+    
     The computed orders are attributes of the Edge objects.
     
     :param dict_strokes: dictionary of all the strokes built, except edges in 
@@ -619,6 +651,8 @@ Orders
     :type dict_strokes: dictionary {integer:list of Edge objects}
 
 
+----------------------------
+
 Write in table
 --------------
 
@@ -626,6 +660,7 @@ Write in table
 
     Updates the table of the layer by adding a column named like the name of
     the order and filling it with the orders calculated before. 
+    
     Updates the table with a field "reversed" if the user selected the option 
     (True if the edge has been reversed for the computation of the orders).
     
@@ -642,6 +677,8 @@ Write in table
     :type edges: list of Edge objects
 
 
+-----------------------------
+
 Dialog messages
 ---------------
 
@@ -655,6 +692,9 @@ Dialog messages
 
     Display a message box that indicates when no stream order was checked for
     computation by the user.
+
+
+-----------------------------
 
 
 Save output
