@@ -21,18 +21,19 @@ The algorithm
 Classes
 ~~~~~~~~~~~~
 
-The algorithm sets 3 classes : *Edge*, *Node* and *Island*. All of them have attributes that define them and that are useful for the good process of the algorithm.
+Instead of working directly on the features of the layer or using an external library, the plugin implements three classes instantiated using the layer features that make travelling through the network easy (and independent from external parts).
+The algorithm sets 3 classes for each geometry type: *Edge* (lines of the networks), *Node* (connecting points) and *Island* (edges delimiting a surface, face of the network). Their attributes register their interconnection in the layer network.
 
 .. figure:: ../_static/classes_Hy2roresOv1.0.png
    :align: center
    
-   Class diagram of the algorithm
+   Class diagram of the algorithm; the methods are not listed here
     
-Initialisation
+Initialization
 ~~~~~~~~~~~~
 
-At the beginning of the process, a method initializes each feature of the layer as an edge or a node, with all its attributes.
-This implies the creation of several global variables such as 
+At the beginning of the process, a method initializes each feature of the layer as an edge and its initial and final nodes, with all their attributes.
+The objects instantiated are stored in two lists that are passed as arguments to all the other methods.
 
 Changes of direction of streams
 ~~~~~~~~~~~~
