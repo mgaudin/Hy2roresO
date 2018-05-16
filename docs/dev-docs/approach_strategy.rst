@@ -7,7 +7,8 @@ General strategy
 Hy2roresO is a QGIS plugin developed in Python 3.6 for QGIS 3.0.
 The implemented algorithm is iterative. The algorithm goes through the river network starting from the sources and down to the sinks.
 The orders computation relies on instances of classes specifically designed for the plugin. They will be detailed further in the documentation.
-This section aims to present the main hypotheses we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (see the Introduction of the User documentation about the Strahler, Shreve and Horton algorithms). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
+**This section aims to present the main hypotheses** we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (see the Introduction of the User documentation_ about the Strahler, Shreve and Horton algorithms). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
+.. _documentation: ../user-docs/presentation.html
 
 Input data
 ------------
@@ -35,18 +36,22 @@ Initialization
 At the beginning of the process, a method initializes each feature of the layer as an edge and its initial and final nodes, with all their attributes.
 The objects instantiated are stored in two lists that are passed as arguments to all the other methods.
 
-Changes of direction of streams
+Correct streams direction
 ~~~~~~~~~~~~
 
-A method was created to change the direction of the streams. It is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
+Methods were implemented to check and correct the streams direction. If the option in the launcher interface is checked, directions are tested.  
+The checking method is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
 
-There are two criterias that can detect wrong directions from streams:
- * If there is an incoherence in the altitudes (if the beginning altitude is lower than the end altitude)
- * If there are, for a node with a degree different to 1, only incoming edges or only outgoing edges. If so, the algorithm detects them and will propose to reverse only some of them so as to get a better hierarchisation.
+A stream direction is suspected to be incorrect if it meets one of the two following criteria:
+ * The altitudes are known (fields name filled by the user in the launcher) and the initial altitude is lower than the final altitude of the edge;
+ * A connected node is not a source or a sink (degree larger than 1) and has only incoming edges or only outgoing edges.
+ 
+The suspicious edges are displayed thanks to a dialog box to the user, who can choose for each edge if they want to reverse it or not by knowing the direction of connected streams and the structure of the network. Obviously, amongst all the suspicious edges, only the edges approved by the user will be reversed for the orders computation.
 
-Then the algorithm proposes to the user to change the directions of the streams it has detected. The user can therefore reverse them or not manually or automatically thanks to the plugin during the process.
+If the edge is reversed, the information is stored as a boolean attribute of the object and a field can be added to the input layer to restore this information to the user (option in the launcher).
 
-*Note : Changing the direction of the stream will not change the geometry in itself : it will only create an attribute and a column reversed that will be used throughout the process of the algorithm.*
+*Note: Changing the direction of the stream will not change the geometry of the feature of the input layer. It will only change the attributes of the object instantiated from the layer feature, that only exist within the plugin.*
+
 
 Orders
 ~~~~~~~~~~~~
