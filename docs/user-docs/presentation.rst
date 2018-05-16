@@ -73,7 +73,7 @@ The Horton stream order is the third most commonly used stream order in hydrolog
 which takes into account the strokes and the Strahler stream order.
 Horton’s stream order applies to the stream as a whole and not according to the edges of the network. 
 The first step of its process is to define the strokes, which are sets of arcs that appear to be continuous (as in a straight line or curve). 
-The second step is to define the Horton stream order for each stroke according to the strokes and the Strahler stream order. 
+The second step is to define the Horton stream order for each stroke according to the strokes and the Strahler stream order. The Horton order of a stream is the maximum value of the Strahler order of the stroke the stream belongs to.
 The main stroke is first to be set its Horton stream order which corresponds to its Strahler stream order, 
 and then each stroke is given a Horton stream order corresponding to its Strahler order. 
 
