@@ -1,5 +1,6 @@
 .. py:class::  Hydroreso(self)
-    .. py:method:: run_process(self)
+
+.. py:method:: Hydroreso.run_process(self)
     
         Do the whole stuff
 
@@ -10,7 +11,7 @@
    Instantiated with attributes of the features of the layer of the network.
    
    
-    .. py:method:: __init__(self, geom, id_edge, node_start, node_end)
+.. py:method:: Edge.__init__(self, geom, id_edge, node_start, node_end)
     
         # Geometry of the feature (line)
         self.geom = geom
@@ -21,13 +22,13 @@
         # End node of the edge
         self.node_end = node_end
 
-    .. py:method:: copy_edge(self)
+.. py:method:: Edge.copy_edge(self)
 
-        Copy an Edge object.
-        Create an Edge object that has the same attributes.
-        
-        :return: Copy of the edge
-        :rtype: Edge object
+    Copy an Edge object.
+    Create an Edge object that has the same attributes.
+
+    :return: Copy of the edge
+    :rtype: Edge object
 
         
 .. py:class::  Node(self)
@@ -35,63 +36,69 @@
     Class of a Node of the river network.
     Instantiated with attributes of the features of the layer of the network.
 
-    .. py:method::  __init__(self, geom, id_node)
-    
-        # Geometry of the feature (point)
-        self.geom = geom
-        # ID of the node (ID of one of its connected edges and number 1 or 2 concatenated)
-        self.id_node = id_node
-        
-    .. py:method::  copy_node(self)
+.. py:method::  Node.__init__(self, geom, id_node)
 
-        Copy a Node object.
-        Create a Node object that has the same attributes.
+    # Geometry of the feature (point)
+    self.geom = geom
+    # ID of the node (ID of one of its connected edges and number 1 or 2 concatenated)
+    self.id_node = id_node
         
-        :return: Copy of the node
-        :rtype: Node object
+.. py:method:: Node.copy_node(self)
+
+    Copy a Node object.
+    Create a Node object that has the same attributes.
+
+    :return: Copy of the node
+    :rtype: Node object
 
 
 .. py:class::  Island(self)
 
     Class of an Island of the river network.
     Instantiated with the edges of the island.
-    """
-    .. py:method::  __init__(self, island_edges)
+
+.. py:method::  Island.__init__(self, island_edges)
+
+    # Edges that make up the island (Edge objects)
+    self.edges = island_edges
+
+.. py:method::  Island.copy_island(self)
+
+    Copy an Island object.
+    Create an Island object that has the same attributes.
+
+    :return: Copy of the island
+    :rtype: Island object
+
+.. py:method::  Island.compute_edges_in_out(self)
+
+    Compute the incoming and outgoing edges of the island.
+    Set attributes edges_in and edges_out from the edges of the island and
+    their connections to the network.
+
     
-        # Edges that make up the island (Edge objects)
-        self.edges = island_edges
-        
-    .. py:method::  copy_island(self)
-    
-        Copy an Island object.
-        Create an Island object that has the same attributes.
-        
-        :return: Copy of the island
-        :rtype: Island object
-        
-    .. py:method::  compute_edges_in_out(self)
+.. py:method::  Island.compute_edges_in(self):
 
-        Compute the incoming and outgoing edges of the island.
-        Set attributes edges_in and edges_out from the edges of the island and
-        their connections to the network.
+    Compute the incoming edges of the island.
+    Set attribute edges_in from the edges of the island and their 
+    connections to the network.
 
-    
-    .. py:method::  compute_edges_in(self):
 
-        Compute the incoming edges of the island.
-        Set attribute edges_in from the edges of the island and their 
-        connections to the network.
-        
-        
-    .. py:method::  compute_edges_out(self):
+.. py:method::  Island.compute_edges_out(self):
 
-        Compute the outgoing edges of the island.
-        Set attribute edges_out from the edges of the island and their 
-        connections to the network.
+    Compute the outgoing edges of the island.
+    Set attribute edges_out from the edges of the island and their 
+    connections to the network.
 
 
 ---------------------
 
+
+Test
+^^^^
+
+
+---------------------
 .. py:function:: create_edges_nodes(features, name_column, alt_init_column, alt_final_column)
 
     Instantiate all the Edge and Node objects that make up the river network.
