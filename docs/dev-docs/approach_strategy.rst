@@ -52,14 +52,28 @@ If the edge is reversed, the information is stored as a boolean attribute of the
 
 *Note: Changing the direction of the stream will not change the geometry of the feature of the input layer. It will only change the attributes of the object instantiated from the layer feature, that only exist within the plugin.*
 
+Sources and sinks detection
+~~~~~~~~~~~~
+The plugin detects the sources and sinks of the network. The user does not have to indicate them to the algorithm. 
+
+A source is a node that has no incoming edges. The outgoing edges of the sources are stored into a list that is passed as an argument to the method which implements orders computation. The initialize the iterative process of orders computation.
+
+A sink is a node that has no outgoing edges. Their detection is not useful to the Hy2roresO algorithm.
+
+*Note: It is important that directions are corrected before this step, as missing a source will affect the whole branch connected to the source edge.*
+
+Island detection
+~~~~~~~~~~~~
 
 Orders
 ~~~~~~~~~~~~
 
-The orders are defined in the user documentation_. They are computed in the algorithm, and a column for each order chosen will be created in the output layer containing these orders.
+The user can choose to compute the Strahler order, the Shreve order and/or the Horton order in the launcher.
+The orders are defined in the user documentation_. 
+The algorithm computes the orders, store them as attributes of the Edge objects specifically instantiated and add a column for each chosen order to the input layer. Computing meaningful orders requires to take the specificities of the network structure into consideration.
  .. _documentation: ../user-docs/presentation.html
  
-The algorithm also handles cases that have not been treated properly in former plugins, such as the islands. If there is a succession of adjacent island (complex island), these islands are aggregated to form a simple island, so as to generalize the case as if it was a simple island.
+ If there is a succession of adjacent island (complex island), these islands are aggregated to form a simple island, so as to generalize the case as if it was a simple island.
 
 Strahler stream order
 ++++++++++++++++
