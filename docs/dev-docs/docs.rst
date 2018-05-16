@@ -1,9 +1,17 @@
+Documentation
+=============
+
+
+Classes
+-------
+
 .. py:class::  Hydroreso(self)
 
-.. py:method:: Hydroreso.run_process(self)
+   .. py:method:: run_process(self)
     
         Do the whole stuff
 
+---------------------
  
 .. py:class::  Edge(self)
 
@@ -30,7 +38,10 @@
     :return: Copy of the edge
     :rtype: Edge object
 
-        
+
+---------------------
+
+
 .. py:class::  Node(self)
 
     Class of a Node of the river network.
@@ -50,6 +61,9 @@
 
     :return: Copy of the node
     :rtype: Node object
+
+
+---------------------
 
 
 .. py:class::  Island(self)
@@ -94,11 +108,9 @@
 ---------------------
 
 
-Test
-^^^^
+Instanciations of the classes
+-----------------------------
 
-
----------------------
 .. py:function:: create_edges_nodes(features, name_column, alt_init_column, alt_final_column)
 
     Instantiate all the Edge and Node objects that make up the river network.
@@ -140,7 +152,7 @@ Test
 
  
 .. py:function:: create_islands(streams_in_islands)
-    """
+
     Instanciation of Island objects from the list of the edges that make up the
     island.
     
@@ -149,14 +161,15 @@ Test
     
     :param streams_in_islands: edges that belong to the island
     :type streams_in_islands: list of lists of Edge objects
-    """
+
+
             
-CORRECT EDGE DIRECTIONS
------------------------
+Correct edges directions
+------------------------
 
 
-def test_direction(edges, nodes):
-    """
+.. py:function:: test_direction(edges, nodes)
+
     Test the direction of edges and return the list of abnormal edges
     (probable wrong direction).
     
@@ -164,15 +177,16 @@ def test_direction(edges, nodes):
     
     :param edges: list of all the edges making up the river network
     :type edges: list of Edge objects
+    
     :param nodes: list of all the nodes making up the river network
     :type nodes: list of Node objects
     
     :return: list of abnormal edges
     :rtype: list of Edge objects
-    """
+
     
-def is_node_abnormal(node):
-    """
+.. py:function:: is_node_abnormal(node)
+
     Test if a node is abnormal, ie if all its connected edges are in the same
     direction (all incoming or all outgoing edges) and the node is not a source
     nor a sink (it has more than one incoming or outgoing edge). A node that is 
@@ -183,10 +197,10 @@ def is_node_abnormal(node):
     
     :param node: node to test
     :type node: Node object
-    """
 
-def next_node_of_edge(node, edge):
-    """
+
+.. py:function:: next_node_of_edge(node, edge)
+
     Return the node of the edge that is not the input node.
     
     :param node: current node
@@ -196,11 +210,10 @@ def next_node_of_edge(node, edge):
     
     :return: next node of the edge
     :rtype: Node object
-    """
-   
     
-def reverse(edge):
-    """
+    
+.. py:function:: reverse(edge)
+
     Reverse an Edge object.
     The method swaps the nodes of the edge, updates the incoming and outgoing
     edges lists of the nodes, reverses the geometry of the edge and updates
@@ -209,17 +222,18 @@ def reverse(edge):
     
     :param edge: edge to reverse
     :type edge: Edge object
-    """
+
     
-def reverse_all_edges(edges_to_reverse):
-    """
+.. py:function:: reverse_all_edges(edges_to_reverse)
+
     Reverse edges of the input list (call reverse(edge) method).
     
     :param edges_to_reverse: list of edges to reverse
     :edges_to_reverse type: list of Edge objects
     
-def edges_to_features(list_edges, input_layer):
-    """
+    
+.. py:function:: edges_to_features(list_edges, input_layer)
+
     Transform a list of Edges objects into a list of the corresponding features
     of the layer.
     
@@ -231,10 +245,10 @@ def edges_to_features(list_edges, input_layer):
     
     :return: list of features
     :rtype: list of QgsFeatures objects
-    """
+
         
-def features_to_edges(list_features, edges):
-    """
+.. py:function:: features_to_edges(list_features, edges)
+
     Transform a list of QgsFeatures objects into a list of the corresponding 
     Edge objects of the layer.
     
@@ -246,12 +260,13 @@ def features_to_edges(list_features, edges):
     
     :return: list of edges
     :rtype: list of Edge objects
-    """
 
-# ________ SOURCES AND SINKS _________________________________________________
-                
-def find_sources_sinks(edges):
-    """
+
+Sources and sinks
+-----------------
+               
+.. py:function:: find_sources_sinks(edges):
+
     Find source edges and sink edges of the network.
     A source edge is an edge exiting a node that is only connected to this edge.
     A sink edge is an edge entering a node that is only connected to this edge.
@@ -263,32 +278,33 @@ def find_sources_sinks(edges):
     :rtype: list of Edge objects, list of Edge objects
 
 
----------
-
-ISLANDS DETECTION
------------------
+Island detection
+----------------
 
 
-def detect_islands(stream_layer, edges):
-    """
+.. py:function:: detect_islands(stream_layer, edges)
+
     Detect islands in the network.
     Return a list of lists of the edges that make up each island.
     
     :param stream_layer: layer of the river network
     :type edges: QgsVectorLayer object
+    
     :param edges: list of all the edges that make up the river network
     :type edges: list of Edge objects
     
     :return: list of lists of edges of the islands
     :rtype: list of lists of Edge objects
 
-def polygonize(input_layer, name="temp"):
-        """
+
+.. py:function:: polygonize(input_layer, name="temp")
+
         Island detection algorithm.
         If there is no island, return None.
         
         :param input_layer: layer of the river network
         :input_layer type: QgsVectorLayer object
+        
         :param name: name of the layer if displayed
         :name type: string
         
@@ -296,8 +312,8 @@ def polygonize(input_layer, name="temp"):
         :rtype: QgsVectorLayer object
 
 
-def create_layer_geom(list_geom, crs, name="temp"):
-    """
+.. py:function:: create_layer_geom(list_geom, crs, name="temp")
+
     Create a Polygon layer with the input list of geometries (must be polygons).
     
     :param list_geom: list of polygons
@@ -311,17 +327,21 @@ def create_layer_geom(list_geom, crs, name="temp"):
     
     :return: layer of polygons
     :rtype: QgsVectorLayer object
-    """
 
-def iterator_to_list(iterator):
-    """
+
+.. py:function:: iterator_to_list(iterator):
+
     Transform the input iterator into a list.
+    
     :param iterator: the iterator to convert
     :iterator type: iterator
-    """
+    
+    :return: the list of the values of the iterator
+    :rtype: list
 
-def aggregate(listFeatures):
-    """
+
+.. py:function:: aggregate(listFeatures)
+
     Aggregate the geometries of the input list of features into one geometry.
     
     :param listFeatures: features to aggregate
@@ -329,10 +349,10 @@ def aggregate(listFeatures):
     
     :return: the aggregated geometry
     :rtype: QgsGeometry object
-    """
+
     
-def multi_to_single(geom):
-    """
+.. py:function:: multi_to_single(geom)
+
     Transform the input multi-polygon into a list of single-polygons.
     
     :param geom: multi-polygon
@@ -340,23 +360,25 @@ def multi_to_single(geom):
     
     :return: list of the single geometries
     :rtype: list of QgsGeometry objects
-    """
 
-def relate_stream_island(stream_layer, island_layer):
-    """
+
+.. py:function:: relate_stream_island(stream_layer, island_layer)
+
     Return the streams inside or delimiting islands.
     The topology is defined by DE-9IM matrices.
     
     :param stream_layer: the layer of the river network
     :stream_layer type: QgisVectorLayer object (lines)
+    
     :param island_layer: the layer of the islands 
     :island_layer type: QgisVectorLayer object (polygons)
     
     :return: list of lists of all the streams that make up the islands
     :rtype: list of lists of QgisFeatures objects
 
-def merge_successive_islands_streams(streams_in_island_list):
-    """
+
+.. py:function:: merge_successive_islands_streams(streams_in_island_list)
+
     Compute successive islands.
     Successive islands are islands that are not adjacent, and there is no 
     edge between them (that does not belong to an island).
@@ -367,15 +389,16 @@ def merge_successive_islands_streams(streams_in_island_list):
     
     :param streams_in_island_list: list of lists of all the streams that
                                    make up the islands
+                                   
     :type streams_in_island_list: list of lists of QgisFeatures objects
     
     :return: list of lists of all the streams that make up the islands, 
              successive islands merged
     :rtype: list of lists of QgisFeatures objects
-    """  
 
-def merge_duplicate(merged_streams_in_island_list):
-    """
+
+.. py:function:: merge_duplicate(merged_streams_in_island_list)
+
     Merge lists that have at least one common element into one list.
     
     :param merged_streams_in_island_list: list of lists to test and merge
@@ -383,149 +406,165 @@ def merge_duplicate(merged_streams_in_island_list):
     
     :return: list of merged lists
     :rtype: list of lists
-    """
+
                        
     
     
 Orders
 ------    
-# ________ ORDERS ____________________________________________________________
 
-def compute_stroke(dict_strokes, edge, list_incoming_edges):
-    """
+.. py:function:: compute_stroke(dict_strokes, edge, list_incoming_edges)
+
     Compute the stroke of the input edge. 
     Return the ID of the stroke.
     
     :param dict_strokes: dictionary of the strokes already built 
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
+    
     :param edge: edge of which the stroke is computed
     :type edge: Edge object
+    
     :param list_incoming_edges: list of the incoming edges of the input edge
     :type list_incoming_edges: list of Edge objects
     
     :return: ID of the stroke of the input edge
     :rtype: integer
-    """        
+        
 
-def compute_length(stroke):
-    """
+.. py:function:: compute_length(stroke)
+
     Return the total length of a stroke (sum of the lengths of the geometries
     of the edges that make up the stroke).
     
     :param stroke: list of edges
     :type stroke: list of Edge objects
-    """    
 
-def compute_angle(edge_in, edge_out):
-    """
+
+.. py:function:: compute_angle(edge_in, edge_out):
+
     Compute the angle formed by edge_in and edge_out, edge_in entering the node
     edge_out exits.
     
     :param edge_in: one side of the angle
     :type edge_in: Edge object
+    
     :param edge_out: one side of the angle
     :type edge_out: Edge object
-    """
 
-def azimuth_angle(node_start, node_end):
-    """
+
+.. py:function:: azimuth_angle(node_start, node_end):
+
     Compute the azimuth of a line defined by its start node and its end node.
     
     :param node_start: origin of the line
     :type node_start: QgsPointXY object
+    
     :param node_end: end of the line
     :type node_start: QgsPointXY object
-    """
 
-def compute_stroke_of_island(dict_strokes, island, incoming_edges_island):
-    """
+
+.. py:function:: compute_stroke_of_island(dict_strokes, island, incoming_edges_island)
+
     Compute the stroke of the island. 
     Return the ID of the stroke.
     
     :param dict_strokes: dictionary of the strokes already built 
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
+    
     :param island: island of which the stroke is computed
     :type island: Island object
+    
     :param incoming_edges_island: list of the incoming edges of the island
     :type incoming_edges_island: list of Edge objects
     
     :return: ID of the stroke of the input edge
     :rtype: integer
-    """
 
-def compute_stroke_outgoing_island(dict_strokes, dict_forks, island_id_stroke, outgoing_edges_island):
-    """
+
+.. py:function:: compute_stroke_outgoing_island(dict_strokes, dict_forks, island_id_stroke, outgoing_edges_island)
+
     Compute the stroke of the outgoing edges of the island. 
     Set the attribute id_stroke of the edges.
     
     :param dict_strokes: dictionary of the strokes already built 
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
+    
     :param dict_forks: dictionary of the strokes already built that split
                     {key= upstream stroke ID: values= list of stroke IDs after the stroke}
     :type dict_forks: dictionary {integer:list of Edge objects}
+    
     :param island_id_stroke: stroke ID of the island
     :type island_id_stroke: integer 
+    
     :param outgoing_edges_island: list of the outgoing edges of the island
     :type outgoing_edges_island: list of Edge objects
-    """            
 
-def is_upstream_processed(incoming_edges, edges_to_process):
-    """
+
+.. py:function:: is_upstream_processed(incoming_edges, edges_to_process)
+
     Check if all incoming edges have been processed. 
     Return True if processed.
     
     :param incoming_edges: list of edges to check (incoming edges of a current edge)
     :type incoming_edges: list of Edge objects
+    
     :param edges_to_process: list of edges left to process
     :type edges_to_process: list of Edge objects
-    """
 
-def process_network(edges, sources_edges, orders_to_compute, edges_to_process, dict_strokes, dict_strokes_in_island, dict_forks):
-    """
+
+.. py:function:: process_network(edges, sources_edges, orders_to_compute, edges_to_process, dict_strokes, dict_strokes_in_island, dict_forks)
+
     Compute stream orders: Strahler, Shreve and / or Horton, according to the
     selection of the user.
     The computed orders are attributes of the Edge objects.
     
     :param edges: list of all the edges making up the river network
     :type edges: list of Edge objects
+    
     :param sources_edges: list of all source edges of the river network
     :type sources_edges: list of Edge objects
+    
     :param orders_to_compute: list of the orders to compute (selected by the user)
     :type orders_to_compute: list of strings
+    
     :param edges_to_process: list of the edges left to process
     :type edges_to_process: list of Edge objects
+    
     :param dict_strokes: dictionary of the strokes already built (except edges of islands)
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
+    
     :param dict_strokes_in_island: dictionary of the strokes already built of
                                    edges in islands
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes_in_island: dictionary {integer:list of Edge objects}
+    
     :param dict_forks: dictionary of the strokes already built that split
                     {key= upstream stroke ID: values= list of stroke IDs after the stroke}
     :type dict_forks: dictionary {integer:list of Edge objects}
-    """
+
     
-def is_in_loop(left_edge, edges_to_process):
-    """
+.. py:function:: is_in_loop(left_edge, edges_to_process)
+
     Test if an edge is connected to a loop in the network.
     Return the edges of the loop in a list (return an empty list if no loop was 
     detected).
     
     :param left_edge: edge to test (could not be processed by process_network)
     :type left_edge: Edge object
+    
     :param edges_to_process: list of edges left to process
     :type edges_to_process: list of Edge objects
     
     :return: list of the edges of the loop (or empty list if no loop)
     :rtype: list of Edge objects
-    """
+
     
-def process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_strokes_in_island):
-    """
+.. py:function:: process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_strokes_in_island)
+
     Process edges of a loop.
     Their order and their stroke take the same value. The orders are computed 
     with orders of the incoming edges of the edges of the loop that are known 
@@ -534,10 +573,13 @@ def process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_stroke
     
     :param edges_in_loop: list of the edges of the loop
     :type edges_in_loop: list of Edge objects
+    
     :param orders_to_compute: list of the orders to compute (selected by the user)
     :type orders_to_compute: list of strings
+    
     :param edges_to_process: list of edges left to process
     :type edges_to_process: list of Edge objects
+    
     :param dict_strokes_in_island: dictionary of the strokes already built of
                                    edges in islands
                     {key= stroke ID: values= list of the edges of the stroke}
@@ -546,26 +588,28 @@ def process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_stroke
     :return: indicate if the loop was successfully processed 
             (can be processed only if incoming edges were already processed)
     :rtype: boolean
-    """
 
-def merge_strokes(dict_strokes, dict_strokes_in_island, dict_forks):
-    """
+
+.. py:function:: merge_strokes(dict_strokes, dict_strokes_in_island, dict_forks)
+
     Merge the strokes of the islands and of the forks with the main stroke.
     
     :param dict_strokes: dictionary of the strokes already built (except edges of islands)
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
+    
     :param dict_strokes_in_island: dictionary of the strokes already built of
                                    edges in islands
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes_in_island: dictionary {integer:list of Edge objects}
+    
     :param dict_forks: dictionary of the strokes already built that split
                     {key= upstream stroke ID: values= list of stroke IDs after the stroke}
     :type dict_forks: dictionary {integer:list of Edge objects}
-    """
+
     
-def compute_horton(dict_strokes):
-    """
+.. py:function:: compute_horton(dict_strokes)
+
     Compute the Horton order using the input strokes.
     The computed orders are attributes of the Edge objects.
     
@@ -573,14 +617,13 @@ def compute_horton(dict_strokes):
                          islands
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
-    """
+
 
 Write in table
 --------------
-# ___________ WRITE IN TABLE _________________________________________________ 
 
-def update_table(input_layer, orders_to_compute, field_reverse, edges):
-    """
+.. py:function:: update_table(input_layer, orders_to_compute, field_reverse, edges)
+
     Updates the table of the layer by adding a column named like the name of
     the order and filling it with the orders calculated before. 
     Updates the table with a field "reversed" if the user selected the option 
@@ -588,35 +631,37 @@ def update_table(input_layer, orders_to_compute, field_reverse, edges):
     
     :param input_layer: layer of the river network
     :type input_layer: QgsVectorLayer object
+    
     :param orders_to_compute: list of the orders to compute (selected by the user)
     :type orders_to_compute: list of strings
+    
     :param field_reverse: field reversed is added to the table (selected by the user))
     :type field_reverse: boolean
+    
     :param edges: list of all the edges making up the river network
     :type edges: list of Edge objects
-    """
+
 
 Dialog messages
 ---------------
-# ________ SAVE OUTPUT _______________________________________________________
 
-def show_field_created_successfully():
-    """
+.. py:function:: show_field_created_successfully()
+
     Display a message box that indicates when the input layer has been
     updated.
-    """
 
-def show_message_no_stream_order_selected():
-    """
+
+.. py:function:: show_message_no_stream_order_selected()
+
     Display a message box that indicates when no stream order was checked for
     computation by the user.
-    """
+
 
 Save output
 -----------
 
-def save_output_layer(output, path_to_saving_location):
-    """
+.. py:function:: save_output_layer(output, path_to_saving_location)
+
     Save the output layer
     
     :param output: output layer to be saved
