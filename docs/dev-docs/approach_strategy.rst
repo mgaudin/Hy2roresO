@@ -7,14 +7,16 @@ General strategy
 Hy2roresO is a QGIS plugin developed in Python 3.6 for QGIS 3.0.
 The implemented algorithm is iterative. The algorithm goes through the river network starting from the sources and down to the sinks.
 The orders computation relies on instances of classes specifically designed for the plugin. They will be detailed further in the documentation.
+
 **This section aims to present the main hypotheses** we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (see the Introduction of the User documentation_ about the Strahler, Shreve and Horton algorithms). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
 .. _documentation: ../user-docs/presentation.html
 
 Input data
 ------------
 
-The data and chosen options the plugin needs as input are the orders to compute and the layer of the river network. The network layer must be a linear vectorial layer. The network should not contain artificial zones such as irrigation zones, since such configurations are not specifically handled by the algorithm and the result may be meaningless. Forks of streams that do not occur in an island (two or more streams exiting an island), immediately at the sources (multiple sources exiting a single node) or at the sinks of the network (deltas) may also introduce mistakes in the strokes computation, that might spread into the downstream network calculation afterwards (see the upstream length criteria for strokes computation below). 
-Be aware that the layer must also not contain duplicated geometries. Duplicated geometries are hard to notice since you cannot see them simply by displaying the layer, and they significantly alter the orders computation. Duplicated geometries are processed as two streams connected to the same nodes, but they do not make up an island (islands have a non-zero area). Thus duplicated geometries artificially increase the Strahler and Shreve orders at each node, completely distorting the results.
+The data and chosen options the plugin needs as input are the orders to compute and the layer of the river network. The network layer must be a linear vectorial layer. The network **should not contain artificial zones** such as irrigation zones, since such configurations are not specifically handled by the algorithm and the result may be meaningless. Forks of streams that do not occur in an island (two or more streams exiting an island), immediately at the sources (multiple sources exiting a single node) or at the sinks of the network (deltas) may also introduce mistakes in the strokes computation, that might spread into the downstream network calculation afterwards (see the upstream length criteria for strokes computation below). 
+
+Be aware that **the layer must also not contain duplicated geometries**. Duplicated geometries are hard to notice since you cannot see them simply by displaying the layer, and they significantly alter the orders computation. Duplicated geometries are processed as two streams connected to the same nodes, but they do not make up an island (islands have a non-zero area). Thus duplicated geometries artificially increase the Strahler and Shreve orders at each node, completely distorting the results.
 
 The algorithm 
 --------------
@@ -23,6 +25,7 @@ Classes
 ~~~~~~~~~~~~
 
 Instead of working directly on the features of the layer or using an external library, the plugin implements three classes instantiated using the layer features that make travelling through the network easy (and independent from external parts).
+
 The algorithm sets 3 classes for each geometry type: *Edge* (lines of the networks), *Node* (connecting points) and *Island* (edges delimiting a surface, face of the network). Their attributes register their interconnection in the layer network.
 
 .. figure:: ../_static/classes_Hy2roresOv1.0.png
@@ -34,17 +37,19 @@ Initialization
 ~~~~~~~~~~~~
 
 At the beginning of the process, a method initializes each feature of the layer as an edge and its initial and final nodes, with all their attributes.
+
 The objects instantiated are stored in two lists that are passed as arguments to all the other methods.
 
 Correct streams direction
 ~~~~~~~~~~~~
 
 Methods were implemented to check and correct the streams direction. If the option in the launcher interface is checked, directions are tested.  
+
 The checking method is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
 
-A stream direction is suspected to be incorrect if it meets one of the two following criteria:
- * The altitudes are known (fields name filled by the user in the launcher) and the initial altitude is lower than the final altitude of the edge;
- * A connected node is not a source or a sink (degree larger than 1) and has only incoming edges or only outgoing edges.
+A stream direction is suspected to be incorrect if it meets one of the two following **criteria**:
+ * The altitudes are known (fields name filled by the user in the launcher) and **the initial altitude is lower than the final altitude** of the edge;
+ * A connected node is not a source or a sink (degree larger than 1) and has **only incoming edges or only outgoing edges**.
  
 The suspicious edges are displayed thanks to a dialog box to the user, who can choose for each edge if they want to reverse it or not by knowing the direction of connected streams and the structure of the network. Obviously, amongst all the suspicious edges, only the edges approved by the user will be reversed for the orders computation.
 
@@ -54,6 +59,7 @@ If the edge is reversed, the information is stored as a boolean attribute of the
 
 Sources and sinks detection
 ~~~~~~~~~~~~
+
 The plugin detects the sources and sinks of the network. The user does not have to indicate them to the algorithm. 
 
 A source is a node that has no incoming edges. The outgoing edges of the sources are stored into a list that is passed as an argument to the method which implements orders computation. The initialize the iterative process of orders computation.
@@ -65,6 +71,36 @@ A sink is a node that has no outgoing edges. Their detection is not useful to th
 Island detection
 ~~~~~~~~~~~~
 
+Islands are the most frequent structures a real network may have that differ from and that will alter the orders. We call an island the structure induced by the split of a stream into two or more arms that join back downstream. If the regular algorithm is systematically applied as if the network was a binary tree, the streams that meet again at the end of the island will increase the order. This is an unwanted effect, as this increase is meaningless. It does not relate an upgrade in the hierarchy or a flow increase: no affluent actually meets the stream, the stream meets itself. Therefore, the order should be the same as the upstream order. Thus islands need to be identified, or more accurately edges that delimit islands need to be identified, so that two edges that are actually part of an island do not induce an increase of the order when they meet. The regular algorithms do not apply to edges that belong to islands.
+
+.. note :: 
+   All three orders under study are affected by islands, as Strahler and Shreve orders increase when rivers cross and Horton is based on the value of the Strahler order.
+   
+A great improvement proposed by Hy2roresO in comparison to plugins existing so far is the detection of islands, that enables specific process. 
+
+The edges that belong to islands are detected as such by the algorithm, and will be processed differently from the other edges when computing their orders.
+
+**An island is a face of the network.** The steps of island detections are the following:
+ * Polygonize the network (create the polygons that correspond to the faces of the graph). We re-used the code of the *Polygonize* QGIS tool found in the toolbox.
+.. note :: 
+   Let's underline that underground features are not differentiated from features on other levels, and thus might induce faces that are not islands in reality. Once again, be aware of man-made structures in the network.
+
+Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or the belong to a complex island. Hence the following steps:
+ * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
+ * Detect the edges that belong to the islands. For this step we studied the topological relations between the edges and the islands. We defined our own topological request using a QGIS method *relate()* and DE-9IM matrices.
+ 
+*TODO: ADD PICTURES*
+
+ * Store the edges in a list of lists of the edges of each island. 
+ * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
+ 
+Successive islands are yet another type of topological relation between islands, that also has to be detected. Successive islands are not adjacent, and are not separated by any edge (that does not belong to an island). Therefore successive islands do not have regular outgoing edges (except the last one of the series) and thus have to be processed all at once. 
+ * Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate* function and a DE-9IM matrix.
+ 
+*TODO: ADD PICTURE*
+
+ * The lists of edges belonging to complex (or single) islands that are successive are concatenated, so that the orders computation method will read the edges as making up one island and the appropriate process will be applied to the whole island.
+ 
 Orders
 ~~~~~~~~~~~~
 
@@ -73,7 +109,7 @@ The orders are defined in the user documentation_.
 The algorithm computes the orders, store them as attributes of the Edge objects specifically instantiated and add a column for each chosen order to the input layer. Computing meaningful orders requires to take the specificities of the network structure into consideration.
  .. _documentation: ../user-docs/presentation.html
  
- If there is a succession of adjacent island (complex island), these islands are aggregated to form a simple island, so as to generalize the case as if it was a simple island.
+ 
 
 Strahler stream order
 ++++++++++++++++
