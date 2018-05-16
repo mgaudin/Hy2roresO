@@ -4,14 +4,16 @@ Approach & Strategy
 General strategy
 --------------
 
-Hy2roresO is a QGIS plugin working using an iterative algorithm. Indeed, the algorithm goes through the network from the sources to the sinks, which is different than the recursive algorithm from the Strahler Plugin from QGIS.
-It also uses several global variables during its process, which will be detailed further in the documentation.
+Hy2roresO is a QGIS plugin developed in Python 3.6 for QGIS 3.0.
+The implemented algorithm is iterative. The algorithm goes through the river network starting from the sources and down to the sinks.
+The orders computation relies on instances of classes specifically designed for the plugin. They will be detailed further in the documentation.
+This section aims to present the main hypotheses we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (see the Introduction of the User documentation about the Strahler, Shreve and Horton algorithms). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
 
 Input data
 ------------
 
-The plugin handles a layer which must be a network. The network should not contain artificial zones such as irrigation zones, since the results in these zones will be irrelevant.
-The layer must also not contain duplicated geometries, since it will create irrelevant orders that will be way higher than the good ones.
+The data and chosen options the plugin needs as input are the orders to compute and the layer of the river network. The network layer must be a linear vectorial layer. The network should not contain artificial zones such as irrigation zones, since such configurations are not specifically handled by the algorithm and the result may be meaningless. Forks of streams that do not occur in an island (two or more streams exiting an island), immediately at the sources (multiple sources exiting a single node) or at the sinks of the network (deltas) may also introduce mistakes in the strokes computation, that might spread into the downstream network calculation afterwards (see the upstream length criteria for strokes computation below). 
+Be aware that the layer must also not contain duplicated geometries. Duplicated geometries are hard to notice since you cannot see them simply by displaying the layer, and they significantly alter the orders computation. Duplicated geometries are processed as two streams connected to the same nodes, but they do not make up an island (islands have a non-zero area). Thus duplicated geometries artificially increase the Strahler and Shreve orders at each node, completely distorting the results.
 
 The algorithm 
 --------------
