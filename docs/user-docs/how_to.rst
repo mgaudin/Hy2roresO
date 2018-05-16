@@ -22,7 +22,7 @@ Step 1 : essential parameters
 
 You will find yourself in front of a window :
 
-.. figure:: ../_static/home.png
+.. figure:: ../_static/page1.png
    :align: center
    
    First window of the plugin
@@ -39,7 +39,7 @@ Step 2 : optional parameters
 
 You can now enter more optional parameters to specify the names of the fields corresponding to the **name of the river**, the **initial altitude** and the **final altitude** of each section of the network.
 
-.. figure:: ../_static/optional_parameters.png
+.. figure:: ../_static/page2.png
    :align: center
  
    Second window of the plugin
@@ -56,7 +56,7 @@ On this window you can :
  - add a boolean field *reversed* to the layer you are applying the algorithm on, it indicates whether the streams were reversed during the algorithm (checked initially)
  - save the output layer, and choose the path where you want to save this layer
  
-.. figure:: ../_static/output_parameters.png
+.. figure:: ../_static/page3.png
    :align: center
  
    Third window of the plugin
