@@ -95,18 +95,22 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
 .. figure:: ../_static/imAB.png
    :align: center
    :scale: 40 %
- 
+
+
 .. figure:: ../_static/im1FF00F212.png
    :align: center
    :scale: 40 %
-   
+
+
 .. figure:: ../_static/im1FF0FF212.png
    :align: center
    :scale: 40 %
 
+
 .. figure:: ../_static/im1FFF0F212.png
    :align: center
    :scale: 40 %
+
 
 .. figure:: ../_static/imF1FF0F212.png
    :align: center
