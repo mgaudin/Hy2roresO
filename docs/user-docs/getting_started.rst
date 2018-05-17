@@ -3,7 +3,9 @@ Getting Started
 
 This page will explain you how to get up and running with **Hy2roresO**.
 
-If you already have installdd the plugin, skip ahead to :ref:`presentation`.
+If you already have installdd the plugin, skip ahead to `the user guide of the plugin`_.
+
+.. _the user guide of the plugin: how_to
 
 A quick introduction
 --------------------
@@ -28,59 +30,3 @@ If you are adventurous and would like to get the latest code of the plugin, you 
 * Use git: clone the repository in that directory or clone in your preferred location and use symbolic link in local plugins directory.
 
 The :doc:`contribute` page has more information on getting in touch.
-
-Other stuff to remove
----------------------
-
-Assuming you have Python_ already, `install Sphinx`_::
-
-    $ pip install sphinx sphinx-autobuild
-
-Create a directory inside your project to hold your docs::
-
-    $ cd /path/to/project
-    $ mkdir docs
-
-Run ``sphinx-quickstart`` in there::
-
-    $ cd docs
-    $ sphinx-quickstart
-
-``index.rst`` and some other files
-
-Now, edit your ``index.rst`` and add some information about your project.
-Include as much detail as you like (refer to the reStructuredText_ syntax
-or `this template`_ if you need help). Build them to see how they look::
-
-    $ make html
-
-.. note:: You can use ``sphinx-autobuild`` to auto-reload your docs. Run ``sphinx-autobuild . _build/html`` instead.
-
-In Markdown
-
-You can use Markdown and reStructuredText in the same Sphinx project.
-We support this natively on Read the Docs, and you can do it locally::
-
-    $ pip install recommonmark
-
-Then in your ``conf.py``:
-
-.. code-block:: python
-
-    from recommonmark.parser import CommonMarkParser
-
-    source_parsers = {
-        '.md': CommonMarkParser,
-    }
-
-    source_suffix = ['.rst', '.md']
-
-.. note:: Markdown doesn't support a lot of the features of Sphinx,
-          like inline markup and directives. However, it works for
-          basic prose content. reStructuredText is the preferred
-          format for technical documentation, please read `this blog post`_
-          for motivation.
-
-.. _this blog post: http://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/
-
-.. _connect-account:
