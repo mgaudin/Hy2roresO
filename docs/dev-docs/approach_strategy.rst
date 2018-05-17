@@ -8,7 +8,7 @@ Hy2roresO is a QGIS plugin developed in Python 3.6 for QGIS 3.0.
 The implemented algorithm is iterative. The algorithm goes through the river network starting from the sources and down to the sinks.
 The orders computation relies on instances of classes specifically designed for the plugin. They will be detailed further in the documentation.
 
-**This section aims to present the main hypotheses** we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (*see the Introduction of the User documentation_ about the Strahler, Shreve and Horton algorithms*). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
+**This section aims to present the main hypotheses** we were led to make to enable the orders algorithm to work on complex networks that have singular configurations such as islands, when the theoretical algorithms of all three orders expect a network shaped as a binary tree (*see the Introduction of the User* documentation_ *about the Strahler, Shreve and Horton algorithms*). However, such networks are not the river structures that exist in reality. The goal of the hypotheses made for the implementation of our algorithm is to adapt the general spirit of each order algorithm defined only for binary trees to the more complex reality.
 
 .. _documentation: ../user-docs/presentation.html
 
@@ -93,19 +93,24 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
  * Detect the edges that belong to the islands. For this step we studied the topological relations between the edges and the islands. We defined our own topological request using a QGIS method *relate()* and DE-9IM matrices.
  
 .. figure:: ../_static/imAB.png
-:align: center
+   :align: center
+   :scale: 40 %
  
 .. figure:: ../_static/im1FF00F212.png
    :align: center
+   :scale: 40 %
    
 .. figure:: ../_static/im1FF0FF212.png
-:align: center
+   :align: center
+   :scale: 40 %
 
 .. figure:: ../_static/im1FFF0F212.png
-:align: center
+   :align: center
+   :scale: 40 %
 
 .. figure:: ../_static/imF1FF0F212.png
-:align: center
+   :align: center
+   :scale: 40 %
 
  * Store the edges in a list of lists of the edges of each island. 
  * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
