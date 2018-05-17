@@ -611,9 +611,7 @@ Orders
     :param edges_to_process: list of edges left to process
     :type edges_to_process: list of Edge objects
     
-    :param dict_strokes_in_island: dictionary of the strokes already built of
-                                   edges in islands
-                    {key= stroke ID: values= list of the edges of the stroke}
+    :param dict_strokes_in_island: dictionary of the strokes already built of edges in islands ; {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes_in_island: dictionary {integer:list of Edge objects}
     
     :return: indicate if the loop was successfully processed 
@@ -625,17 +623,13 @@ Orders
 
     Merge the strokes of the islands and of the forks with the main stroke.
     
-    :param dict_strokes: dictionary of the strokes already built (except edges of islands)
-                    {key= stroke ID: values= list of the edges of the stroke}
+    :param dict_strokes: dictionary of the strokes already built (except edges of islands) ; {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
     
-    :param dict_strokes_in_island: dictionary of the strokes already built of
-                                   edges in islands
-                    {key= stroke ID: values= list of the edges of the stroke}
+    :param dict_strokes_in_island: dictionary of the strokes already built of edges in islands ; {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes_in_island: dictionary {integer:list of Edge objects}
     
-    :param dict_forks: dictionary of the strokes already built that split
-                    {key= upstream stroke ID: values= list of stroke IDs after the stroke}
+    :param dict_forks: dictionary of the strokes already built that split ; {key= upstream stroke ID: values= list of stroke IDs after the stroke}
     :type dict_forks: dictionary {integer:list of Edge objects}
 
     
@@ -709,4 +703,4 @@ Save output
     
     :param path_to_saving_location: the path to the place where the layer has 
                                     to be saved
-    :path_to_saving_location type: string
+    :type path_to_saving_location: string
