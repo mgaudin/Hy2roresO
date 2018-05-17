@@ -96,7 +96,8 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
  * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
  
 Successive islands are yet another type of topological relation between islands, that also has to be detected. Successive islands are not adjacent, and are not separated by any edge (that does not belong to an island). Therefore successive islands do not have regular outgoing edges (except the last one of the series) and thus have to be processed all at once. 
- * Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate* function and a DE-9IM matrix.
+ 
+ * Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate()* function and a DE-9IM matrix.
  
 *TODO: ADD PICTURE*
 
@@ -130,9 +131,6 @@ The algorithm runs while there are edges left to process, or until the number of
 
  * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream of the loop that can finally be computed now their incoming edges have been processed.
 
-Stream orders in islands
-++++++++++++++++
-
 Conditions to elaborate the strokes
 ++++++++++++++++
 
@@ -150,6 +148,27 @@ Then, every edge defining the island is given the identifier that was given to t
 When there is a delta or more than one outgoing edge from an island, the stroke is determined as the same stroke from the incoming edge. 
 
 .. [TOUYA2007] http://recherche.ign.fr/labos/cogit/publiCOGITDetail.php?idpubli=4181&portee=labo&id=1&classement=date&duree=100&nomcomplet=Touya%20Guillaume&annee=2007&principale=
+
+Stream orders and strokes in islands
+++++++++++++++++
+
+In islands, the order of each edge is the maximum of the orders of its incoming edges. It guarantees the order won't increase at each river crossing, and the order still gets larger if larger streams meet the island, which is intuitively expected by the user. 
+
+All the edges in the island belong to the same stroke. This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single island, that have only .one incoming edge and one outgoing edge. The two edges of the arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
+
+There are two downsides to this. The first is that the strokes are supposed to be linear geometries in many situations they are used in. Islands break the continuous single line. The second downside is that the length of the stroke is not clearly defined anymore. Again, this could be a setback in many situations. It actually affects Hy2roresO. Indeed the strokes are defined using a criterion on the upstream length of the stroke (amongst other criteria, *more on strokes construction below*). Adding the lengths of all the strokes of the islands together is meaningless realistically. To overcome this issue, edges that belong to an island are stored separately from the rest of the network, and merged back with the main stroke after each edge has been processed and associated with a stroke, and before computing the Horton order. 
+
+The stroke of the island edge is based on the incoming edges of the island (the edges that enter the island but that do not delimit the island nor are enclosed in the island). 
+The determination of the stroke of the island edges is based on two criteria:
+
+ * If one of the incoming edges splits in two entering the island, it probably is the stream delimiting the island and thus the best continuity. If there is the only splitting edge, its stroke is the stroke of the island.
+ * Otherwise, the longest upstream stroke is the stroke if the island.
+
+*Note: an angle criterion would be a possible improvement. However, it requires to define the angle between a linear edge and the island surface. See more about that in the Perspectives.*
+
+Stream orders and strokes exiting islands
+++++++++++++++++
+
 
 Update of the table
 -----------------
