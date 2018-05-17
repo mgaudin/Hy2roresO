@@ -112,10 +112,6 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
    :scale: 40 %
 
 
-.. figure:: ../_static/imF1FF0F212.png
-   :align: center
-   :scale: 40 %
-
  * Store the edges in a list of lists of the edges of each island. 
  * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
  
