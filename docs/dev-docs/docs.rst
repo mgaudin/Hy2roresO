@@ -489,7 +489,7 @@ Orders
     :type node_start: QgsPointXY object
     
     :param node_end: end of the line
-    :type node_start: QgsPointXY object
+    :type node_end: QgsPointXY object
 
 
 .. py:function:: compute_stroke_of_island(dict_strokes, island, incoming_edges_island)
@@ -567,9 +567,7 @@ Orders
                     {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
     
-    :param dict_strokes_in_island: dictionary of the strokes already built of
-                                   edges in islands
-                    {key= stroke ID: values= list of the edges of the stroke}
+    :param dict_strokes_in_island: dictionary of the strokes already built of edges in islands ; {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes_in_island: dictionary {integer:list of Edge objects}
     
     :param dict_forks: dictionary of the strokes already built that split
@@ -640,8 +638,7 @@ Orders
     The computed orders are attributes of the Edge objects.
     
     :param dict_strokes: dictionary of all the strokes built, except edges in 
-                         islands
-                    {key= stroke ID: values= list of the edges of the stroke}
+                         islands ; {key= stroke ID: values= list of the edges of the stroke}
     :type dict_strokes: dictionary {integer:list of Edge objects}
 
 
@@ -699,7 +696,7 @@ Save output
     Save the output layer
     
     :param output: output layer to be saved
-    :output type: QgsVectorLayer
+    :type output: QgsVectorLayer
     
     :param path_to_saving_location: the path to the place where the layer has 
                                     to be saved
