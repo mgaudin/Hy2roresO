@@ -5,7 +5,7 @@ This page will explain you how to get up and running with **Hy2roresO**.
 
 If you already have installdd the plugin, skip ahead to `the user guide of the plugin`_.
 
-.. _`the user guide of the plugin`: how_to.rst
+.. _`the user guide of the plugin`: how_to
 
 A quick introduction
 --------------------
