@@ -93,9 +93,11 @@ The edges that belong to islands are detected as such by the algorithm, and will
 Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or the belong to a complex island. Hence the following steps:
 
  * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
- * Detect the edges that belong to the islands. For this step we studied the topological relations between the edges and the islands. We defined our own topological request using a QGIS method *relate()* and DE-9IM matrices.
- 
- 
+ * Detect the edges that belong to the islands. For this step we studied the topological relations between
+   the edges and the islands. We defined our own topological request using a QGIS method *relate()* and
+   DE-9IM matrices.
+
+
 .. figure:: ../_static/imAB.png
    :align: center
    :scale: 40 %
@@ -123,13 +125,13 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
    Figures of DE-9IM used in the island detection algorithm.
 
 
+
  * Store the edges in a list of lists of the edges of each island. 
  * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
  
 Successive islands are yet another type of topological relation between islands, that also has to be detected. Successive islands are not adjacent, and are not separated by any edge (that does not belong to an island). Therefore successive islands do not have regular outgoing edges (except the last one of the series) and thus have to be processed all at once. 
  
  * Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate()* function and a DE-9IM matrix.
-
  * The lists of edges belonging to complex (or single) islands that are successive are concatenated, so that the orders computation method will read the edges as making up one island and the appropriate process will be applied to the whole island.
  
 Orders computation
@@ -193,7 +195,9 @@ The determination of the stroke of the island edges is based on two criteria:
  * If one of the incoming edges splits in two entering the island, it probably is the stream delimiting the island and thus the best continuity. If there is the only splitting edge, its stroke is the stroke of the island.
  * Otherwise, the longest upstream stroke is the stroke if the island.
 
-*Note: an angle criterion would be a possible improvement. However, it requires to define the angle between a linear edge and the island surface. See more about that in the Perspectives.*
+.. note:: 
+   An angle criterion would be a possible improvement. However, it requires to define the angle between a linear edge and the island surface. See more about that in the Perspectives_.
+   .. _Perspectives: ../dev-docs/perspectives.html
 
 Stream orders and strokes exiting islands
 ++++++++++++++++
