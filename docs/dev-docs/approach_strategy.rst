@@ -57,7 +57,8 @@ The suspicious edges are displayed thanks to a dialog box to the user, who can c
 
 If the edge is reversed, the information is stored as a boolean attribute of the object and a field can be added to the input layer to restore this information to the user (option in the launcher).
 
-*Note: Changing the direction of the stream will not change the geometry of the feature of the input layer. It will only change the attributes of the object instantiated from the layer feature, that only exist within the plugin.*
+.. note::
+   Changing the direction of the stream will not change the geometry of the feature of the input layer. It will only change the attributes of the object instantiated from the layer feature, that only exist within the plugin.*
 
 Sources and sinks detection
 ~~~~~~~~~~~~
@@ -68,14 +69,15 @@ A source is a node that has no incoming edges. The outgoing edges of the sources
 
 A sink is a node that has no outgoing edges. Their detection is not useful to the Hy2roresO algorithm.
 
-*Note: It is important that directions are corrected before this step, as missing a source will affect the whole branch connected to the source edge.*
+.. note:: 
+   It is important that directions are corrected before this step, as missing a source will affect the whole branch connected to the source edge.*
 
 Island detection
 ~~~~~~~~~~~~
 
 Islands are the most frequent structures a real network may have that differ from and that will alter the orders. We call an island the structure induced by the split of a stream into two or more arms that join back downstream. If the regular algorithm is systematically applied as if the network was a binary tree, the streams that meet again at the end of the island will increase the order. This is an unwanted effect, as this increase is meaningless. It does not relate an upgrade in the hierarchy or a flow increase: no affluent actually meets the stream, the stream meets itself. Therefore, the order should be the same as the upstream order. Thus islands need to be identified, or more accurately edges that delimit islands need to be identified, so that two edges that are actually part of an island do not induce an increase of the order when they meet. The regular algorithms do not apply to edges that belong to islands.
 
-.. note :: 
+.. note:: 
    All three orders under study are affected by islands, as Strahler and Shreve orders increase when rivers cross and Horton is based on the value of the Strahler order.
    
 A great improvement proposed by Hy2roresO in comparison to plugins existing so far is the detection of islands, that enables specific process. 
@@ -84,13 +86,15 @@ The edges that belong to islands are detected as such by the algorithm, and will
 
 **An island is a face of the network.** The steps of island detections are the following:
  * Polygonize the network (create the polygons that correspond to the faces of the graph). We re-used the code of the *Polygonize* QGIS tool found in the toolbox.
-.. note :: 
+
+.. note:: 
    Let's underline that underground features are not differentiated from features on other levels, and thus might induce faces that are not islands in reality. Once again, be aware of man-made structures in the network.
 
 Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or the belong to a complex island. Hence the following steps:
 
  * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
  * Detect the edges that belong to the islands. For this step we studied the topological relations between the edges and the islands. We defined our own topological request using a QGIS method *relate()* and DE-9IM matrices.
+ 
  
 .. figure:: ../_static/imAB.png
    :align: center
@@ -116,7 +120,7 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
    :align: center
    :scale: 40 %
 
-
+   Figures of DE-9IM used in the island detection algorithm.
 
 
  * Store the edges in a list of lists of the edges of each island. 
