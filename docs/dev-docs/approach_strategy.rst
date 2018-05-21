@@ -70,7 +70,7 @@ A source is a node that has no incoming edges. The outgoing edges of the sources
 A sink is a node that has no outgoing edges. Their detection is not useful to the Hy2roresO algorithm.
 
 .. note:: 
-   It is important that directions are corrected before this step, as missing a source will affect the whole branch connected to the source edge.*
+   It is important that directions are corrected before this step, as missing a source will affect the whole branch connected to the source edge.
 
 Island detection
 ~~~~~~~~~~~~
@@ -120,8 +120,9 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
 .. figure:: ../_static/imF1FF0F212.png
    :align: center
    :scale: 40 %
-
    Figures of DE-9IM used in the island detection algorithm.
+
+Then:
  * Store the edges in a list of lists of the edges of each island. 
  * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
  
@@ -179,7 +180,7 @@ Stream orders and strokes in islands
 
 In islands, the order of each edge is the maximum of the orders of its incoming edges. It guarantees the order won't increase at each river crossing, and the order still gets larger if larger streams meet the island, which is intuitively expected by the user. 
 
-All the edges in the island belong to the same stroke. This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single island, that have only .one incoming edge and one outgoing edge. The two edges of the arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
+All the edges in the island belong to the same stroke. This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single island, that have only one incoming edge and one outgoing edge. The two edges of the arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
 
 There are two downsides to this. The first is that the strokes are supposed to be linear geometries in many situations they are used in. Islands break the continuous single line. The second downside is that the length of the stroke is not clearly defined anymore. Again, this could be a setback in many situations. It actually affects Hy2roresO. Indeed the strokes are defined using a criterion on the upstream length of the stroke (amongst other criteria, *more on strokes construction below*). Adding the lengths of all the strokes of the islands together is meaningless realistically. To overcome this issue, edges that belong to an island are stored separately from the rest of the network, and merged back with the main stroke after each edge has been processed and associated with a stroke, and before computing the Horton order. 
 
@@ -196,6 +197,7 @@ The determination of the stroke of the island edges is based on two criteria:
 Stream orders and strokes exiting islands
 ++++++++++++++++
 
+Coming soon!
 
 Update of the table
 -----------------
