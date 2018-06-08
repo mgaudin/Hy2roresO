@@ -186,6 +186,7 @@ The algorithm actually takes into account the following criteria:
  - The stroke that **forms an angle with the downstream edge that is the closest to 180 degrees**.
  
 The flow criterion is pushed aside as such data is rarely available and if it is, it does not follow a regular writing convention (see Perspectives_).
+
 .. _Perspectives: ../dev-docs/perspectives.html
 
 .. note:: 
