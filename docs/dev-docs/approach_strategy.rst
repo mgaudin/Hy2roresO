@@ -153,7 +153,7 @@ The main steps of the algorithm are the following:
  * The iterative process is initialized by setting the Strahler and Shreve orders of the source edges to 1. Each source edge also defines a new stroke (except sources that are in islands).
  * For each edge, if all the incoming edges have already been processed, the edge can be processed.
  * If the edge is not in an island, its orders are computed following the rules defined for each order. Its stroke is computed by selecting which of its upstream edges the edge continues the best. *(See more on the strokes below.)*
- * If the edge is in an island, all the edges of the island the edge belongs to are processed. Then all the outgoing edges of the island are processed. *(See more about that below.)*
+ * If the edge is in an island, all the edges of the island the edge belongs to are processed. Then all the outgoing edges of the island are processed. *(See how below.)*
  * The Horton order is computed after all the edges have been processed for Strahler order computation. Indeed the Horton order is based on the Strahler value and its computation needs all the Strahler orders to be computed and all the strokes to be built beforehand.
 
 The algorithm runs while there are edges left to process, or until the number of edges to process does not decrease between two iterations (meaning that the edges left to process can not be processed). Edges cannot be processed if they form a loop, as each edge needs all the other edges of the loop to be processed first before they can be processed.
@@ -165,7 +165,7 @@ Criteria defining a stroke
 
 In the code, its ID defines a stroke. Edges that belong to the same stroke share its ID as attribute.
 
-Each source begins a new stroke. Each source is given a unique stroke ID.
+Each source initiates a new stroke. Each source is given a unique stroke ID.
 As the algorithm travels through the network, each edge continues one of the upstream strokes. Algorithmically, it means that each edge takes as stroke ID the stroke ID of one of its incoming edges. While there is only one incoming edge, there is no ambiguity and the edges belong to the same stroke, and they are given the same stroke ID. When at a river crossing, there are several incoming edges. Only one stroke will continue downstream, the others stop there. 
 
 The upstream stroke that continues downstream from a river crossing can be theoretically chosen according to 4 criteria [TOUYA2007]_ :
@@ -222,7 +222,23 @@ The determination of the stroke of the island edges is based on two criteria:
 Stream orders and strokes exiting islands
 ++++++++++++++++
 
-Coming soon!
+The order of each outgoing edge of the island is computed standardly, taking the incoming edges of the island as incoming edges to compute the order. For instance if there are two edges entering an island whose Strahler orders equal 2 and 2, the Strahler order of the outgoing edge(s) will be 3. The orders of the actual incoming edges (that belong to the island) of the edge exiting the island are ignored. Conceptually, the island is thus similar to a node of the network. **What happens inside the island does not impact the rest of the network.** This is the reason why Hy2roresO is robust to islands when other algorithms are not.
+
+When there is only one edge exiting the island, there is no fork in the network and the stroke of the outgoing edge is quite understandably the stroke of the island, as defined above. 
+
+However, there often is more than one edge exiting an island. As mentioned above, allowing forks in strokes has consequences on the length computation of the stroke used as a criterion to compute the strokes. As this situation is frequent and has impacts on the orders computation, Hy2roresO handles forks in islands.
+
+To respect the characteristic that strokes start at a source and end either at a river crossing or at a sink, **all the arms of a fork belong to the same stroke**.
+In the algorithm, edges of each arm are stored separately. One (random) edge continues the island stroke, while others initiate new arms. Downstream from the fork, each arm is processed as a regular stroke. Its upstream length at a river crossing is the length of the stroke from the source to the fork (shared section), plus the length from the fork to the river crossing (arm length).
+
+At the end of the orders computation, the arms of each forked stroke are merged back together to form one unique stroke. The Horton order can then be computed.
+
+.. note:: 
+   As for now, the algorithm does not process forked arms (successive forks). Such "sub-arms" might be missed out when strokes are merged at the end, implying the Horton order could not be computed.
+
+Once the orders and the stroke of all the edges exiting the island are computed, the edges downstream from the island can be processed. The island has been dealt with and the algorithm can continue on the rest of the network.
+
+
 
 Update of the attribute table of the input layer
 -----------------
