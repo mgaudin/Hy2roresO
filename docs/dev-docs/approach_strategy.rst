@@ -196,10 +196,6 @@ The flow criterion is pushed aside as such data is rarely available and if it is
 
 Once the strokes are defined, it is possible to compute the Horton stream order, for which each stroke is given the maximum of the Strahler orders of the edges of the stroke.
 
-When handling an island, the stroke is calculated according to the conditions of name and length of the incoming strokes. The island is isolated and the outgoing edge is set to be attributed a stroke identifier from one of the incoming edges.
-Then, every edge defining the island is given the identifier that was given to the outgoing edge. The island is completely part of the stroke this way, which was one of our suppositions (the island is there seen as a node).
-
-When there is a delta or more than one outgoing edge from an island, the stroke is determined as the same stroke from the incoming edge. 
 
 .. [TOUYA2007] http://recherche.ign.fr/labos/cogit/publiCOGITDetail.php?idpubli=4181&portee=labo&id=1&classement=date&duree=100&nomcomplet=Touya%20Guillaume&annee=2007&principale=
 
