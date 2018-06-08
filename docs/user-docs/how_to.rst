@@ -78,6 +78,8 @@ During the process of the algorithm, if you have chosen to authorize the algorit
    
    Window asking if the user wants to reverse a feature
 
+Streams that are suspected to be uncorrect are streams connected to a node that has several incoming edges but no outgoing edge, or several outgoing edges but no incoming edge; or streams whose initial altitude is lower than final altitude (if altitude fields are known).
+
 You can reverse the feature which is being processed or not. You can also ask to reverse them all or to let them all at their initial state, knowing the number of streams that could be reversed.
 
 *Note : The algorithm does not modify the layer in itself by reversing some features, it is only for its good process!*
