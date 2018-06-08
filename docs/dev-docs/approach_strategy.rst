@@ -224,11 +224,15 @@ Stream orders and strokes exiting islands
 
 Coming soon!
 
-Update of the table
+Update of the attribute table of the input layer
 -----------------
 
-The last part of the algorithm concerns the output data. This part creates new columns of attributes to the layer, which are the different orders calculated, a column 'reversed' if it has been chosen and a column with the identifier of the stroke if the Horton stream order has been calculated.
-	
-If you have chosen to get a new output layer with all the data, then you will get one with the data from the former layer and the new columns. Else the algorithm will update your input layer by adding these new columns.
+The last step of the algorithm is to update the input layer by adding new fields. 
 
-#TODO: Finally, if there is already a column named like the ones that will be created, the user will be asked if he wants to keep the former column or if he wants to overwrite it.
+There is one written field for each computed stream order. Each field is named after the order: **"strahler"**, **"shreve"** or **"horton"**.
+The field **"id_stroke"** that indicates for each edge the ID of the stroke it belongs to is systematically added to the layer if the strokes have been computed, that is if the Horton order has been computed.
+An optional field **"reversed"** can also be added (if the option was checked in the launcher), which equals True if the edge was reversed for the orders computation and False if it was not.
+
+.. note:: 
+   As for now, there is no test on the name of the column. Beware if there already is an existing field named as one of the fields to be created by Hy2roresO, as it will be overwritten.
+
