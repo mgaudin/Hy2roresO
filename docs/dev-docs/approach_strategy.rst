@@ -91,6 +91,7 @@ The edges that belong to islands are detected as such by the algorithm, and will
    Let's underline that underground features are not differentiated from features on other levels, and thus might induce faces that are not islands in reality. Once again, be aware of man-made structures in the network.
 
 Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or they belong to a complex island. Hence the following steps:
+ 
  * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
  * Detect the edges that belong to the islands. For this step we studied the topological relations between
    the edges and the islands. We defined our own topological request using a QGIS method *relate()* and
@@ -124,6 +125,7 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
    Figures of DE-9IM used in the island detection algorithm.
 
 Then:
+ 
  * Store the edges in a list of lists of the edges of each island. 
  * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
  
@@ -182,8 +184,8 @@ The algorithm actually takes into account the following criteria:
 .. note:: 
    As for now, there is no other test on the strings than strict equality. Therefore, any typing error, any upper/lower case difference, etc. will not allow to match the names. Tests on toponym similarity could improve this criterion (see Perspectives_). Beware also that strings such as "NR" or "N/A" that indicate unknown toponyms will be detected as identical names. We chose not to implement a criterion to eliminate this case as writing conventions in the database may differ.
 
- - One of the incoming strokes is **at least 3 times longer** than the other incoming strokes.
- - The stroke that **forms an angle with the downstream edge that is the closest to 180 degrees**.
+- One of the incoming strokes is **at least 3 times longer** than the other incoming strokes.
+- The stroke that **forms an angle with the downstream edge that is the closest to 180 degrees**.
  
 The flow criterion is pushed aside as such data is rarely available and if it is, it does not follow a regular writing convention (see Perspectives_).
 
