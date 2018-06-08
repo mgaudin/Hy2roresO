@@ -5,9 +5,7 @@ Hy2roresO deals with a whole bunch of cases that can happen with natural hydrolo
 
 * Strokes can be defined using the criterion that their name should remain the same after a river crossing. Rivers were indeed named according to rather intuitive criteria of continuity that strokes should meet. However, toponyms can be written in many different ways in the database. As for now, the algorithm only tests the strict equality of the strings. Therefore, any typing error, any upper/lower case difference, etc. will not allow to match the names. **Tests on toponym similarity** could improve this criterion. Methods of distance measurements between toponyms exist and could be implemented to improve the pairing of names. Beware also that strings such as "NR" or "N/A" that indicate unknown toponyms will be detected as identical names. We chose not to implement a criterion to eliminate this case as writing conventions in the database may differ. Frequently used conventions should be implemented for **better matching of the names and improved strokes computation**.
 
-* Forks in the network are not managed by the algorithm. Forks induce an error on the length of the stroke and generate mistakes when computing the strokes. *(See Approach&Strategy_ .)*
-
-.. _Approach&Strategy: ../dev-docs/approach_strategy.html
+* Forks in the network are not managed by the algorithm. Forks induce an error on the length of the stroke and generate mistakes when computing the strokes.
 
 * One thing that can be done is to create fictive network inside the islands, for example by using a **skeleton** of the geometry of the island. This could for example **improve the definition of strokes entering and exiting an island**, especially it the island is curved. It also would grant the strokes a linear geometry (without the forks inside the islands), which is commonly expected of a stroke.
 .. figure:: ../_static/skeleton.png
