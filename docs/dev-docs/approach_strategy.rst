@@ -180,7 +180,7 @@ The algorithm actually takes into account the following criteria:
  - The names of the edges exist (name field given as input through the launcher), and **the name of the outgoing edge is exactly the same as one of its incoming edges**.
  
 .. note:: 
-   As for now, there is no other test on the strings than strict equality. Therefore, any typing error, an upper/lower case difference, etc. will not allow to match the names. Tests on toponym similarity could improve this criterion (see Perspectives_). Beware also that strings such as "NR" or "N/A" that indicate unknown toponyms will be detected as identical names. We chose not to implement a criterion to eliminate this case as writing conventions in the database may differ.
+   As for now, there is no other test on the strings than strict equality. Therefore, any typing error, any upper/lower case difference, etc. will not allow to match the names. Tests on toponym similarity could improve this criterion (see Perspectives_). Beware also that strings such as "NR" or "N/A" that indicate unknown toponyms will be detected as identical names. We chose not to implement a criterion to eliminate this case as writing conventions in the database may differ.
 
  - One of the incoming strokes is **at least 3 times longer** than the other incoming strokes.
  - The stroke that **forms an angle with the downstream edge that is the closest to 180 degrees**.
