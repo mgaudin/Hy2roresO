@@ -9,7 +9,9 @@ To use Hy2roresO properly, make sure you have opened the vector layer correspond
 Your layer must not contain artificial networks (such as irrigation zones), and must not have duplicated geometries, for the algorithm to run properly. If you have duplicated geometries in your layer, please refer to the Documentation_ from QGIS to eliminate them.
  .. _Documentation: https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/vector_general_tools/deleteduplicategeometries.html
  
-The output of the plugin is the input layer with new fields corresponding to the different orders.
+The output of the plugin is the input layer with new fields corresponding to the different orders. 
+
+The fields will be named like the orders : "strahler", "shreve" and "horton". Fields "reversed" and "id_stroke" may also be added. Before running the plugin, **please make sure that the table of attributes of the input layer does not already have fields named like so**. They would be overwritten.
 
 To open the Hy2roresO plugin, go to the *Extension* menu, then find Hy2roresO and open it. You can also find it thanks to its icon : |icon|
 
