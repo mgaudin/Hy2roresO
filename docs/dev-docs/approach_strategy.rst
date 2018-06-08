@@ -230,7 +230,7 @@ However, there often is more than one edge exiting an island. As mentioned above
 To respect the characteristic that strokes start at a source and end either at a river crossing or at a sink, **all the arms of a fork belong to the same stroke**.
 In the algorithm, edges of each arm are stored separately. One (random) edge continues the island stroke, while others initiate new arms. Downstream from the fork, each arm is processed as a regular stroke. Its upstream length at a river crossing is the length of the stroke from the source to the fork (shared section), plus the length from the fork to the river crossing (arm length).
 
-At the end of the orders computation, the arms of each forked stroke are merged back together to form one unique stroke. The Horton order can then be computed.
+At the end of the orders computation, the arms of each forked stroke are merged back together to form one unique stroke. The Horton order can then be computed. It is the maximum of the Strahler orders of the edges of the global stroke, whatever the arm. Every arm will have the same Horton order, as they belong to the same stroke.
 
 .. note:: 
    As for now, the algorithm does not process forked arms (successive forks). Such "sub-arms" might be missed out when strokes are merged at the end, implying the Horton order could not be computed.
