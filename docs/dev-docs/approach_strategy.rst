@@ -42,10 +42,10 @@ At the beginning of the process, a method initializes each feature of the layer 
 
 The objects instantiated are stored in two lists that are passed as arguments to all the other methods.
 
-Correct streams direction
+Correct stream direction
 ~~~~~~~~~~~~
 
-Methods were implemented to check and correct the streams direction. If the option in the launcher interface is checked, directions are tested.  
+Methods were implemented to check and correct the stream direction. If the option in the launcher interface is checked, directions are tested.  
 
 The checking method is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
 
@@ -120,6 +120,7 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
 .. figure:: ../_static/imF1FF0F212.png
    :align: center
    :scale: 40 %
+   
    Figures of DE-9IM used in the island detection algorithm.
 
 Then:
