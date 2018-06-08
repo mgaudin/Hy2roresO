@@ -177,13 +177,13 @@ The upstream stroke that continues downstream from a river crossing can be theor
 These criteria are in priority order: each criterion applies if the previous criteria are not met.
 
 The algorithm actually takes into account the following criteria:
- - The names of the edges exist (name field given as input through the launcher), and the name of the outgoing edge is exactly the same as one of its incoming edges.
+ - The names of the edges exist (name field given as input through the launcher), and **the name of the outgoing edge is exactly the same as one of its incoming edges**.
  
 .. note:: 
    As for now, there is no other test on the strings than strict equality. Therefore, any typing error, an upper/lower case difference, etc. will not allow to match the names. Tests on toponym similarity could improve this criterion (see Perspectives_). Beware also that strings such as "NR" or "N/A" that indicate unknown toponyms will be detected as identical names. We chose not to implement a criterion to eliminate this case as writing conventions in the database may differ.
 
- - One of the incoming strokes is at least 3 times longer than the other incoming strokes.
- - The stroke that forms an angle with the downstream edge that is the closest to 180 degrees.
+ - One of the incoming strokes is **at least 3 times longer** than the other incoming strokes.
+ - The stroke that **forms an angle with the downstream edge that is the closest to 180 degrees**.
  
 The flow criterion is pushed aside as such data is rarely available and if it is, it does not follow a regular writing convention (see Perspectives_).
 .. _Perspectives: ../dev-docs/perspectives.html
@@ -203,16 +203,16 @@ When there is a delta or more than one outgoing edge from an island, the stroke 
 Stream orders and strokes in islands
 ++++++++++++++++
 
-In islands, the order of each edge is the maximum of the orders of its incoming edges. It guarantees the order won't increase at each river crossing, and the order still gets larger if larger streams meet the island, which is intuitively expected by the user. 
+**In islands, the Strahler order and Shreve order of each edge is the maximum of the orders of its incoming edges.** It guarantees the order won't increase at each river crossing inside the island, and the order still gets larger if larger streams meet the island, which is intuitively expected by the user. **The Horton order of the edges in islands is the Horton order of the stroke of the island** (that is the stroke all the edges belong to).
 
-All the edges in the island belong to the same stroke. This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single island, that have only one incoming edge and one outgoing edge. The two edges of the arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
+**All the edges in an island belong to the same stroke.** This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you will want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single island, that have only one incoming edge and one outgoing edge. The edges of the two arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
 
-There are two downsides to this. The first is that the strokes are supposed to be linear geometries in many situations they are used in. Islands break the continuous single line. The second downside is that the length of the stroke is not clearly defined anymore. Again, this could be a setback in many situations. It actually affects Hy2roresO. Indeed the strokes are defined using a criterion on the upstream length of the stroke (amongst other criteria, *more on strokes construction below*). Adding the lengths of all the strokes of the islands together is meaningless realistically. To overcome this issue, edges that belong to an island are stored separately from the rest of the network, and merged back with the main stroke after each edge has been processed and associated with a stroke, and before computing the Horton order. 
+There are two downsides to this. The first is that the strokes are supposed to be linear geometries in many situations they are used in. Islands break the continuous single line. The second downside is that the length of the stroke is not clearly defined anymore. Again, this could be a setback in many situations. It actually affects Hy2roresO. Indeed the strokes are defined using a criterion on the upstream length of the stroke (amongst other criteria, *more on stroke construction above*). Adding the lengths of all the strokes of the islands together is meaningless realistically. To overcome this issue, edges that belong to an island are stored separately from the rest of the network, and merged back with the main stroke after each edge has been processed and associated with a stroke, and before computing the Horton order (so that the edges of an island still belong to a stroke and can have an Horton order). **This means that the upstream length of a stroke calculated at a river crossing does not include the river length in islands.**
 
 The stroke of the island edge is based on the incoming edges of the island (the edges that enter the island but that do not delimit the island nor are enclosed in the island). 
 The determination of the stroke of the island edges is based on two criteria:
- * If one of the incoming edges splits in two entering the island, it probably is the stream delimiting the island and thus the best continuity. If there is the only splitting edge, its stroke is the stroke of the island.
- * Otherwise, the longest upstream stroke is the stroke if the island.
+ * If **one of the incoming edges splits in two entering the island**, it probably is the stream delimiting the island and thus the best continuity. If there is only one splitting edge, its stroke is the stroke of the island.
+ * Otherwise, the **longest upstream stroke** is the stroke if the island.
 
 .. note:: 
    An angle criterion would be a possible improvement. However, it requires to define the angle between a linear edge and the island surface. See more about that in the Perspectives_.
