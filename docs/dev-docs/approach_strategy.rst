@@ -157,19 +157,41 @@ The main steps of the algorithm are the following:
  * The Horton order is computed after all the edges have been processed for Strahler order computation. Indeed the Horton order is based on the Strahler value and its computation needs all the Strahler orders to be computed and all the strokes to be built beforehand.
 
 The algorithm runs while there are edges left to process, or until the number of edges to process does not decrease between two iterations (meaning that the edges left to process can not be processed). Edges cannot be processed if they form a loop, as each edge needs all the other edges of the loop to be processed first before they can be processed.
+ 
+ * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream from the loop that can finally be computed now their incoming edges have been processed.
 
- * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream of the loop that can finally be computed now their incoming edges have been processed.
-
-Conditions to elaborate the strokes
+Criteria defining a stroke
 ++++++++++++++++
 
-Each source gets an identifier of stroke. Then, arriving in an intersection (node), the id of the outgoing edge is chosen according to this 4 conditions [TOUYA2007]_ :
- - the name of the outgoing edge exists and is exactly the same as one of its incoming edges
- - the incoming edge that has the highest flow (if it exists in the data). This condition is not handled in the algorithm.
- - one of the incoming stroke is more than 3 times longer than the other incoming strokes
- - the stroke that creates an angle that is the closest to 180 degrees (more continuous)
+In the code, its ID defines a stroke. Edges that belong to the same stroke share its ID as attribute.
 
-After defining the strokes, we can attribute for each edges of a stroke the same Horton stream order, which is the maximum of the Strahler order of the edges of the stroke. The main stroke gets therefore the maximum Strahler stream order, and so one until each stroke is treated.
+Each source begins a new stroke. Each source is given a unique stroke ID.
+As the algorithm travels through the network, each edge continues one of the upstream strokes. Algorithmically, it means that each edge takes as stroke ID the stroke ID of one of its incoming edges. While there is only one incoming edge, there is no ambiguity and the edges belong to the same stroke, and they are given the same stroke ID. When at a river crossing, there are several incoming edges. Only one stroke will continue downstream, the others stop there. 
+
+The upstream stroke that continues downstream from a river crossing can be theoretically chosen according to 4 criteria [TOUYA2007]_ :
+ 
+ - The name of the river remains the same along the stroke, up and down the river crossing.
+ - The stroke that has the highest flow is the main stroke, and is the one that continues.
+ - If the longest stroke upstream from the river crossing is at least 3 times longer than the other incoming strokes, it is the one that continues.
+ - The stroke that forms an angle with the downstream edge the closest to 180 degrees is the most continuous, and it is the one that continues downstream from the river crossing.
+These criteria are in priority order: each criterion applies if the previous criteria are not met.
+
+The algorithm actually takes into account the following criteria:
+ - The names of the edges exist (name field given as input through the launcher), and the name of the outgoing edge is exactly the same as one of its incoming edges.
+ 
+.. note:: 
+   As for now, there is no other test on the strings than strict equality. Therefore, any typing error, an upper/lower case difference, etc. will not allow to match the names. Tests on toponym similarity could improve this criterion (see Perspectives_). Beware also that strings such as "NR" or "N/A" that indicate unknown toponyms will be detected as identical names. We chose not to implement a criterion to eliminate this case as writing conventions in the database may differ.
+
+ - One of the incoming strokes is at least 3 times longer than the other incoming strokes.
+ - The stroke that forms an angle with the downstream edge that is the closest to 180 degrees.
+ 
+The flow criterion is pushed aside as such data is rarely available and if it is, it does not follow a regular writing convention (see Perspectives_).
+.. _Perspectives: ../dev-docs/perspectives.html
+
+.. note:: 
+   There is no specific process implemented in case of a fork (ie several downstream edges) that is not an island in a network. Forks in islands (ie several edges exit the island) are processed *(see more about that below)*. If there is a fork, edges downstream from the fork are processed individually as described above and they may continue the same stroke: the stroke forms a fork. This behavior is appropriate at a river delta. Deltas are thus correctly handled by default. However, one of the criteria is based on the length of the strokes. The lengths of the arms of a fork will add up as if the edges were continuous forming a single line, making the stroke that split in two (incorrectly) long, and thus making it artificially most likely to be chosen as the main stroke at each river crossing downstream from the fork.
+
+Once the strokes are defined, it is possible to compute the Horton stream order, for which each stroke is given the maximum of the Strahler orders of the edges of the stroke.
 
 When handling an island, the stroke is calculated according to the conditions of name and length of the incoming strokes. The island is isolated and the outgoing edge is set to be attributed a stroke identifier from one of the incoming edges.
 Then, every edge defining the island is given the identifier that was given to the outgoing edge. The island is completely part of the stroke this way, which was one of our suppositions (the island is there seen as a node).
