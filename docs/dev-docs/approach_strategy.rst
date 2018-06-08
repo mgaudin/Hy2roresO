@@ -65,7 +65,7 @@ Sources and sinks detection
 
 The plugin detects the sources and sinks of the network. The user does not have to indicate them to the algorithm. 
 
-A source is a node that has no incoming edges. The outgoing edges of the sources are stored into a list that is passed as an argument to the method which implements orders computation. The initialize the iterative process of orders computation.
+A source is a node that has no incoming edges. The outgoing edges of the sources are stored into a list that is passed as an argument to the method which implements orders computation. They initialize the iterative process of orders computation.
 
 A sink is a node that has no outgoing edges. Their detection is not useful to the Hy2roresO algorithm.
 
@@ -90,7 +90,7 @@ The edges that belong to islands are detected as such by the algorithm, and will
 .. note:: 
    Let's underline that underground features are not differentiated from features on other levels, and thus might induce faces that are not islands in reality. Once again, be aware of man-made structures in the network.
 
-Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or the belong to a complex island. Hence the following steps:
+Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or they belong to a complex island. Hence the following steps:
  * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
  * Detect the edges that belong to the islands. For this step we studied the topological relations between
    the edges and the islands. We defined our own topological request using a QGIS method *relate()* and
@@ -158,7 +158,7 @@ The main steps of the algorithm are the following:
 
 The algorithm runs while there are edges left to process, or until the number of edges to process does not decrease between two iterations (meaning that the edges left to process can not be processed). Edges cannot be processed if they form a loop, as each edge needs all the other edges of the loop to be processed first before they can be processed.
  
- * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream from the loop that can finally be computed now their incoming edges have been processed.
+ * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream from the loop that can finally be computed now that their incoming edges have been processed.
 
 Criteria defining a stroke
 ++++++++++++++++
@@ -206,7 +206,7 @@ Stream orders and strokes in islands
 
 **In islands, the Strahler order and Shreve order of each edge is the maximum of the orders of its incoming edges.** It guarantees the order won't increase at each river crossing inside the island, and the order still gets larger if larger streams meet the island, which is intuitively expected by the user. **The Horton order of the edges in islands is the Horton order of the stroke of the island** (that is the stroke all the edges belong to).
 
-**All the edges in an island belong to the same stroke.** This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you will want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single island, that have only one incoming edge and one outgoing edge. The edges of the two arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
+**All the edges in an island belong to the same stroke.** This decision respects most aspects of a stroke. An island respects good continuity (in general) with one of its incoming edges and one of its outgoing edges. If you look at the network from afar, you will want to draw a line that goes through the island and connects its two ends. There is at first sight no reason why you should pick one edge of the island over the others (in general). This is particularly obvious for single islands, that have only one incoming edge and one outgoing edge. The edges of the two arms are not two rivers but two arms of the same river, therefore they are part of the same stroke. Another criterion in favour of this decision is that a stroke is supposed to start from a source and end either at a sink or at a river crossing. If only one edge of the island was chosen to define the stroke, the other edges would consequently define their own stroke that would not be connected to a source (in general).
 
 There are two downsides to this. The first is that the strokes are supposed to be linear geometries in many situations they are used in. Islands break the continuous single line. The second downside is that the length of the stroke is not clearly defined anymore. Again, this could be a setback in many situations. It actually affects Hy2roresO. Indeed the strokes are defined using a criterion on the upstream length of the stroke (amongst other criteria, *more on stroke construction above*). Adding the lengths of all the strokes of the islands together is meaningless realistically. To overcome this issue, edges that belong to an island are stored separately from the rest of the network, and merged back with the main stroke after each edge has been processed and associated with a stroke, and before computing the Horton order (so that the edges of an island still belong to a stroke and can have an Horton order). **This means that the upstream length of a stroke calculated at a river crossing does not include the river length in islands.**
 
