@@ -21,4 +21,4 @@ Hy2roresO deals with a whole bunch of cases that can happen with natural hydrolo
 
 * The plugin already tests if edges seem to be **directed correctly**, based on their altitudes and the direction of their connected edges. The detection algorithm would be improved by adding an **angle criterion** to the tests.
 
-* The plugin does not test whether **a field already exists** in the attribute table of the input layer. If an existing field is named as the field to create, it will be overwritten. Warning the user and asking whether they want to overwrite the existing field or rename the field to create can be an improvement.
+* The plugin does not test whether **a field already exists** in the attribute table of the input layer. If an existing field is named like the field to create, it will be overwritten. Warning the user and asking whether they want to overwrite the existing field or rename the field to create can be an improvement.
