@@ -94,8 +94,8 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
  
 * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
 * Detect the edges that belong to the islands. For this step we studied the topological relations between
-   the edges and the islands. We defined our own topological request using a QGIS method *relate()* and
-   DE-9IM matrices.
+  the edges and the islands. We defined our own topological request using a QGIS method *relate()* and
+  DE-9IM matrices.
 
 
 .. figure:: ../_static/imAB.png
@@ -123,6 +123,10 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
    :scale: 40 %
    
 .. figure:: ../_static/im1FF00F212.png
+   :align: center
+   :scale: 40 %
+
+.. figure:: ../_static/imFF1F00102.png
    :align: center
    :scale: 40 %
    
