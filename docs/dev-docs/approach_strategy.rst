@@ -50,8 +50,8 @@ Methods were implemented to check and correct the stream direction. If the optio
 The checking method is called if the checkbox in the plugin, that asks the user if he wants to be proposed some streams to reverse, is checked. 
 
 A stream direction is suspected to be incorrect if it meets one of the two following **criteria**:
- * The altitudes are known (fields name filled by the user in the launcher) and **the initial altitude is lower than the final altitude** of the edge;
- * A connected node is not a source or a sink (degree larger than 1) and has **only incoming edges or only outgoing edges**.
+* The altitudes are known (fields name filled by the user in the launcher) and **the initial altitude is lower than the final altitude** of the edge;
+* A connected node is not a source or a sink (degree larger than 1) and has **only incoming edges or only outgoing edges**.
  
 The suspicious edges are displayed thanks to a dialog box to the user, who can choose for each edge if they want to reverse it or not by knowing the direction of connected streams and the structure of the network. Obviously, amongst all the suspicious edges, only the edges approved by the user will be reversed for the orders computation.
 
@@ -92,8 +92,8 @@ The edges that belong to islands are detected as such by the algorithm, and will
 
 Single islands (one face of the graph) or complex islands (a succession of adjacent faces) can be processed similarly. Therefore edges are identified as belonging to one common island whether they delimit a single island or they belong to a complex island. Hence the following steps:
  
- * Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
- * Detect the edges that belong to the islands. For this step we studied the topological relations between
+* Merge the polygons to transform adjacent single islands into one complex island (one bigger polygon).
+* Detect the edges that belong to the islands. For this step we studied the topological relations between
    the edges and the islands. We defined our own topological request using a QGIS method *relate()* and
    DE-9IM matrices.
 
@@ -126,13 +126,13 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
 
 Then:
  
- * Store the edges in a list of lists of the edges of each island. 
- * Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
+* Store the edges in a list of lists of the edges of each island. 
+* Instantiate Island objects from each list of edges corresponding to each (complex) island. The Island objects instantiated are stored as attributes of the Edge objects that belong to the islands. When computing the orders, testing whether this attribute is null or refers to an island tells if the edge belongs to an island and informs what process to apply on the edge.
  
 Successive islands are yet another type of topological relation between islands, that also has to be detected. Successive islands are not adjacent, and are not separated by any edge (that does not belong to an island). Therefore successive islands do not have regular outgoing edges (except the last one of the series) and thus have to be processed all at once.
 
- * Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate()* function and a DE-9IM matrix.
- * The lists of edges belonging to complex (or single) islands that are successive are concatenated, so that the orders computation method will read the edges as making up one island and the appropriate process will be applied to the whole island.
+* Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate()* function and a DE-9IM matrix.
+* The lists of edges belonging to complex (or single) islands that are successive are concatenated, so that the orders computation method will read the edges as making up one island and the appropriate process will be applied to the whole island.
  
 Orders computation
 ~~~~~~~~~~~~
@@ -152,15 +152,15 @@ Strahler, Shreve and Horton stream orders
 The algorithm starts from the sources and travels through the river network down to the sinks.
 
 The main steps of the algorithm are the following:
- * The iterative process is initialized by setting the Strahler and Shreve orders of the source edges to 1. Each source edge also defines a new stroke (except sources that are in islands).
- * For each edge, if all the incoming edges have already been processed, the edge can be processed.
- * If the edge is not in an island, its orders are computed following the rules defined for each order. Its stroke is computed by selecting which of its upstream edges the edge continues the best. *(See more on the strokes below.)*
- * If the edge is in an island, all the edges of the island the edge belongs to are processed. Then all the outgoing edges of the island are processed. *(See how below.)*
- * The Horton order is computed after all the edges have been processed for Strahler order computation. Indeed the Horton order is based on the Strahler value and its computation needs all the Strahler orders to be computed and all the strokes to be built beforehand.
+* The iterative process is initialized by setting the Strahler and Shreve orders of the source edges to 1. Each source edge also defines a new stroke (except sources that are in islands).
+* For each edge, if all the incoming edges have already been processed, the edge can be processed.
+* If the edge is not in an island, its orders are computed following the rules defined for each order. Its stroke is computed by selecting which of its upstream edges the edge continues the best. *(See more on the strokes below.)*
+* If the edge is in an island, all the edges of the island the edge belongs to are processed. Then all the outgoing edges of the island are processed. *(See how below.)*
+* The Horton order is computed after all the edges have been processed for Strahler order computation. Indeed the Horton order is based on the Strahler value and its computation needs all the Strahler orders to be computed and all the strokes to be built beforehand.
 
 The algorithm runs while there are edges left to process, or until the number of edges to process does not decrease between two iterations (meaning that the edges left to process can not be processed). Edges cannot be processed if they form a loop, as each edge needs all the other edges of the loop to be processed first before they can be processed.
  
- * Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream from the loop that can finally be computed now that their incoming edges have been processed.
+* Potential edges that form a loop are detected. The order computation of the loop is forced. All the edges of the loop are given the same order, which is the order computed standardly from the orders of all the incoming edges of the loop (that are not in the loop). The process is then executed again to compute the orders of the potential edges downstream from the loop that can finally be computed now that their incoming edges have been processed.
 
 Criteria defining a stroke
 ++++++++++++++++
@@ -210,8 +210,8 @@ There are two downsides to this. The first is that the strokes are supposed to b
 
 The stroke of the island edge is based on the incoming edges of the island (the edges that enter the island but that do not delimit the island nor are enclosed in the island). 
 The determination of the stroke of the island edges is based on two criteria:
- * If **one of the incoming edges splits in two entering the island**, it probably is the stream delimiting the island and thus the best continuity. If there is only one splitting edge, its stroke is the stroke of the island.
- * Otherwise, the **longest upstream stroke** is the stroke if the island.
+* If **one of the incoming edges splits in two entering the island**, it probably is the stream delimiting the island and thus the best continuity. If there is only one splitting edge, its stroke is the stroke of the island.
+* Otherwise, the **longest upstream stroke** is the stroke if the island.
 
 .. note:: 
    An angle criterion would be a possible improvement. However, it requires to define the angle between a linear edge and the island surface. See more about that in the Perspectives_.
