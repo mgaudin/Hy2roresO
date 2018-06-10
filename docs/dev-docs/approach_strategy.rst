@@ -122,6 +122,10 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
    :align: center
    :scale: 40 %
    
+.. figure:: ../_static/im1FF00F212.png
+   :align: center
+   :scale: 40 %
+   
    Figures of DE-9IM used in the island detection algorithm.
 
 Then:
