@@ -73,8 +73,7 @@ Unlike the two other plugins, Hy2roresO computes the strokes, which allows to co
    
    Application of the Horton stream order on a network. The bolder the stroke, the higher the Horton order is.
 
-Comparison between the three existing plugins
+Comparison between other existing plugins for stream order computation
 ------------------
 
-There are lots of differences between the three plugins.
-Here is a :download:`PDF file <doc/Comparison_plugins_order.pdf>` comparing them all. 
+There exist other plugins, on QGIS 2.18 and on GRASS that also compute stream orders. However, there are many differences between the three plugins. Here is a :download:`PDF file <doc/Comparison_plugins_order.pdf>` comparing them all. 
