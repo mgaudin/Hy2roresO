@@ -29,7 +29,9 @@ Hypotheses
 ~~~~~~~~~~
 
 Some hypotheses were made during the computing of the plugin. For more details about these hypotheses, 
-please refer to the Programmer Documentation.
+please refer to the `Developer's Documentation`_.
+
+.. _`Developer Documentation`: ../dev-docs/approach_strategy.html
 
 .. figure:: ../_static/strahler.png
    :align: center
@@ -56,7 +58,9 @@ Hypotheses
 ~~~~~~~~~~
 
 Some hypotheses were made during the computing of the plugin. For more details about these hypotheses, 
-please refer to the Programmer Documentation.
+please refer to the `Developer's Documentation`_.
+
+.. _`Developer's Documentation`: ../dev-docs/approach_strategy.html
 
 .. figure:: ../_static/shreve.png
    :align: center
@@ -82,7 +86,9 @@ Hypotheses
 ~~~~~~~~~~
 
 Some hypotheses were made during the computing of the plugin. For more details about these hypotheses, 
-please refer to the Programmer Documentation.
+please refer to the `Developer's Documentation`_.
+
+.. _`Developer's Documentation`: ../dev-docs/approach_strategy.html
 
 .. figure:: ../_static/horton.png
    :align: center
