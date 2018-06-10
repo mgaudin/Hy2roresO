@@ -165,10 +165,15 @@ Strahler, Shreve and Horton stream orders
 The algorithm starts from the sources and travels through the river network down to the sinks.
 
 The main steps of the algorithm are the following:
+
 * The iterative process is initialized by setting the Strahler and Shreve orders of the source edges to 1. Each source edge also defines a new stroke (except sources that are in islands).
+
 * For each edge, if all the incoming edges have already been processed, the edge can be processed.
+
 * If the edge is not in an island, its orders are computed following the rules defined for each order. Its stroke is computed by selecting which of its upstream edges the edge continues the best. *(See more on the strokes below.)*
+
 * If the edge is in an island, all the edges of the island the edge belongs to are processed. Then all the outgoing edges of the island are processed. *(See how below.)*
+
 * The Horton order is computed after all the edges have been processed for Strahler order computation. Indeed the Horton order is based on the Strahler value and its computation needs all the Strahler orders to be computed and all the strokes to be built beforehand.
 
 The algorithm runs while there are edges left to process, or until the number of edges to process does not decrease between two iterations (meaning that the edges left to process can not be processed). Edges cannot be processed if they form a loop, as each edge needs all the other edges of the loop to be processed first before they can be processed.
