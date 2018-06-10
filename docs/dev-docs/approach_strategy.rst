@@ -85,7 +85,7 @@ A great improvement proposed by Hy2roresO in comparison to plugins existing so f
 The edges that belong to islands are detected as such by the algorithm, and will be processed differently from the other edges when computing their orders.
 
 **An island is a face of the network.** The steps of island detections are the following:
- * Polygonize the network (create the polygons that correspond to the faces of the graph). We re-used the code of the *Polygonize* QGIS tool found in the toolbox.
+* Polygonize the network (create the polygons that correspond to the faces of the graph). We re-used the code of the *Polygonize* QGIS tool found in the toolbox.
 
 .. note:: 
    Let's underline that underground features are not differentiated from features on other levels, and thus might induce faces that are not islands in reality. Once again, be aware of man-made structures in the network.
