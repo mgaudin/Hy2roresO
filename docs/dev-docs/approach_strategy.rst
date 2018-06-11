@@ -128,10 +128,6 @@ Single islands (one face of the graph) or complex islands (a succession of adjac
 .. figure:: ../_static/im1FF00F212.png
    :align: center
    :scale: 40 %
-
-.. figure:: ../_static/imFF1F00102.png
-   :align: center
-   :scale: 40 %
    
    Figures of DE-9IM used in the island detection algorithm.
 
@@ -144,6 +140,12 @@ Then:
 Successive islands are yet another type of topological relation between islands, that also has to be detected. Successive islands are not adjacent, and are not separated by any edge (that does not belong to an island). Therefore successive islands do not have regular outgoing edges (except the last one of the series) and thus have to be processed all at once.
 
 * Unlike complex islands, this structure can not be detected using merging. Another specific topological request is defined, still with the *relate()* function and a DE-9IM matrix.
+
+.. figure:: ../_static/imFF1F00102.png
+   :align: center
+   :scale: 40 %
+   
+   Figure of DE-9IM used to detect successive islands.
 
 * The lists of edges belonging to complex (or single) islands that are successive are concatenated, so that the orders computation method will read the edges as making up one island and the appropriate process will be applied to the whole island.
  
