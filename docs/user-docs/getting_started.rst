@@ -31,4 +31,6 @@ From QGIS Plugin Manager
 
 Unfortunately, you won't be able to download the plugin from the QGIS Plugin Manager.
 
-The :doc:`..\about-docs\contribute` page has more information on getting in touch.
+The page `Contribute`_ has more information on getting in touch.
+
+.. _Contribute : https://hy2roreso.readthedocs.io/en/latest/about-docs/contribute.html
