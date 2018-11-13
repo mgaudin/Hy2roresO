@@ -31,4 +31,4 @@ From QGIS Plugin Manager
 
 Unfortunately, you won't be able to download the plugin from the QGIS Plugin Manager.
 
-The :doc:`contribute` page has more information on getting in touch.
+The :doc:`..\about-docs\contribute` page has more information on getting in touch.
