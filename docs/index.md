@@ -41,10 +41,10 @@ As for the data, you will only need a shapefile (.shp) of a stream network. It w
 
 This work was realized during a project by three students of the Ecole Nationale des Sciences Géographiques (ENSG).
 
-Michaël Gaudin (<michael.gaudin@ensg.eu>)
+Michaël Gaudin (<michael.gaudin (at) ensg.eu>)
 
-Alice Gonnaud (<alice.gonnaud@ensg.eu>)
+Alice Gonnaud (<alice.gonnaud (at) ensg.eu>)
 
-Guillaume Vasseur (<guillaume.vasseur@ensg.eu>)
+Guillaume Vasseur (<guillaume.vasseur (at) ensg.eu>)
 
 We thank very much our supervisor during this project, Cécile Duchêne, researcher. We also thank Guillaume Touya, Head of the COGIT Department at the IGN for his help.
