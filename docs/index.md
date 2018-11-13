@@ -32,6 +32,11 @@ Finally, this plugin can process in every hydrological network, with every natur
 To process the plugin, you must have QGIS 3.0 and Python 3.6.
 As for the data, you will only need a shapefile (.shp) of a stream network. It will then appear in the selection of layers at the beginning of the process.
 
+### Other plugins
+
+- QGIS plugin "Strahler"
+- v.stream.order from GRASS
+
 ## Credits
 
 This work was realized during a project by three students of the Ecole Nationale des Sciences Géographiques (ENSG).
@@ -43,5 +48,3 @@ Alice Gonnaud (<alice.gonnaud@ensg.eu>)
 Guillaume Vasseur (<guillaume.vasseur@ensg.eu>)
 
 We thank very much our supervisor during this project, Cécile Duchêne, researcher. We also thank Guillaume Touya, Head of the COGIT Department at the IGN for his help.
-
-Credits to the QGIS plugin "Strahler" and v.stream.order from GRASS
