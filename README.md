@@ -12,13 +12,13 @@ This QGIS plugin computes different stream orders that can be applied to hydrolo
 
 ## Credits
 
-Work realised during a project by three students of the Ecole Nationale des Sciences Géographiques (ENSG) under the mentoring of Cecile Duchene (cecile.duchene@ensg.eu).
+Work realised during a project by three students of the Ecole Nationale des Sciences Géographiques (ENSG) (http://ensg.eu) under the mentoring of Cecile Duchene (cecile.duchene (at) ensg.eu).
 
-Michaël Gaudin (michael.gaudin@ensg.eu)
+Michaël Gaudin (michael.gaudin (at) ensg.eu)
 
-Alice Gonnaud (alice.gonnaud@ensg.eu)
+Alice Gonnaud (alice.gonnaud (at) ensg.eu)
 
-Guillaume Vasseur (guillaume.vasseur@ensg.eu)
+Guillaume Vasseur (guillaume.vasseur (at) ensg.eu)
 
 
 Existing plugin for QGIS :
