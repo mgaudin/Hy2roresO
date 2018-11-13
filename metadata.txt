@@ -1,0 +1,43 @@
+#*******************************************************************************
+# This plugin is released under the 3-Clause BSD License
+#
+# see license-3-Clause-BSD.txt
+#
+# see <a href="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</a>
+#
+# @author Michaël Gaudin, Alice Gonnaud, Guillaume Vasseur
+#
+# @copyright 2018 - Michaël Gaudin, Alice Gonnaud, Guillaume Vasseur, ENSG
+#*****************************************************************************/
+
+
+
+# Metadata for the plugin, to appear in the QGIS plugins installation window
+[general]
+name=Hy2roresO
+qgisMinimumVersion=3.0
+description=Plugin
+version=0.0.1
+author=M. Gaudin, A.Gonnaud, G.Vasseur
+email=michael.gaudin@ensg.eu;alice.gonnaud@ensg.eu;guillaume.vasseur@ensg.eu
+
+about=Hy2roresO is a QGIS plugin able to compute various hierarchisation stream orders, such as Strahler order, Horton order or Shreve order, from an input shapefile.
+
+tracker=https://github.com/mgaudin/Hy2roresO/issues
+repository=https://github.com/mgaudin/Hy2roresO
+# End of mandatory metadata
+
+# Recommended items:
+
+# changelog=
+
+# Tags are comma separated with spaces allowed
+tags=python
+
+homepage=https://mgaudin.github.io/Hy2roresO/
+icon=icon.png
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
