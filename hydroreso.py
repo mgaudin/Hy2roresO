@@ -1282,10 +1282,10 @@ def merge_duplicate(merged_streams_in_island_list):
                     for elem in list2:
                         if elem not in list1:
                             list1.append(elem)
-                    list_islands.pop(list_islands.index(list2))
+                    list_islands[list_islands.index(list2)] = None
     
-    # List or merged lists               
-    return list_islands
+    # List or merged lists
+    return [island for island in list_islands if island]
                         
     
     
@@ -1635,6 +1635,8 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
                     id_stroke += 1
             
             # Edge processed
+            # Here we may pop, because process_network is not called while iterating edges_to_process,
+            # and we are not iterating edges_to_process here.
             edges_to_process.pop(edges_to_process.index(source))
     
     edges_to_process_start_loop = []
@@ -1645,6 +1647,8 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
         
         # For each edge left to process
         for edge in edges_to_process:
+            if not edge:
+                continue
 
             # NOT IN ISLAND 
             
@@ -1682,7 +1686,8 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
                         dict_strokes[id_stroke].append(edge)
                         edge.id_stroke = id_stroke
                     
-                    edges_to_process.pop(edges_to_process.index(edge))
+                    # this one removes current edge from edges_to_process
+                    edges_to_process[edges_to_process.index(edge)] = None
                     
                 # If upstream edges not processed yet, pass    
                 else :
@@ -1727,7 +1732,7 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
                     edge_island_to_process = []
                     for edge_island in edge.island.edges:
                         for edge_island_in_list_to_process in edges_to_process:
-                            if edge_island_in_list_to_process.id_edge == edge_island.id_edge:
+                            if edge_island_in_list_to_process and edge_island_in_list_to_process.id_edge == edge_island.id_edge:
                                 edge_island_to_process.append(edge_island)
 
                     
@@ -1738,6 +1743,8 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
                         
                         # Edges that make up the island
                         for edge_island in edge_island_to_process:
+                            if not edge_island:
+                                continue
 
                             # Incoming edges of the edge of the island (may be in island too)
                             incoming_edges = edge_island.node_start.edges_in
@@ -1768,9 +1775,15 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
                                     edge_island.id_stroke = id_stroke
                                     
                                 # List of all edges left to process (outer while loop)
-                                edges_to_process.pop(edges_to_process.index(edge_island))
+                                #
+                                # NOTE: this one removes an object *other than* the one currently
+                                # selected from the outer loop.
+                                # Therefore, the outer loop may encounter empty edges later in the loop.
+                                edges_to_process[edges_to_process.index(edge_island)] = None
                                 # List of edges of the island left to process (inner while loop)
-                                edge_island_to_process.pop(edge_island_to_process.index(edge_island))
+                                #
+                                # This one removes edge currently selected from inner loop.
+                                edge_island_to_process[edge_island_to_process.index(edge_island)] = None
                             
                             # If upstream edges of the edge in the island not processed yet, pass
                             else:
@@ -1805,19 +1818,22 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
                                 upstream_orders = [incoming_edge_island.stream_orders["shreve"] for incoming_edge_island in incoming_edges_island]
                                 outgoing_edge_island.stream_orders["shreve"] = sum(upstream_orders)
     
-                            edges_to_process.pop(edges_to_process.index(outgoing_edge_island))
+                            edges_to_process[edges_to_process.index(outgoing_edge_island)] = None
                     
                 # If upstream edges of the island not processed yet, pass    
                 else:                                                       
                     continue
-    
+
+
     # Horton order computation needs Strahler orders to be entirely computed
     if "horton" in orders_to_compute:
         # Merge the strokes back together (main strokes, edges in islands, forks)
         dict_merged_strokes = merge_strokes(dict_strokes, dict_strokes_in_island, dict_forks)
         compute_horton(dict_merged_strokes)
         
-        
+    # *After* one run, we must remove all the deleted edges *together*
+    edges_to_process = [edge for edge in edges_to_process if edge]
+
     # LOOPS
     # If there are edges that failed to be processed, they are probably in a 
     # loop
@@ -1827,9 +1843,13 @@ def process_network(edges, sources_edges, orders_to_compute, edges_to_process, d
         for left_edge in edges_to_process:
             edges_in_loop = is_in_loop(left_edge, edges_to_process)
             if edges_in_loop != []:
+                # The function below may remove objects from edges_to_process.
+                # However, the function *only* removes an edge *if* it returns True and breaks the loop.
                 loop_processed = process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_strokes_in_island)          
                 if loop_processed:
                     break
+        # remove any deleted edges before we continue
+        edges_to_process = [edge for edge in edges_to_process if edge]
         # execute function process_network (to process downstream edges) if 
         # there was a loop
         if nb_edges_to_process != len(edges_to_process):
@@ -1967,7 +1987,7 @@ def process_loop(edges_in_loop, orders_to_compute, edges_to_process, dict_stroke
                 edge_loop.id_stroke = id_stroke
 
         # The edge of the loop is processed        
-        edges_to_process.pop(edges_to_process.index(edge_loop))
+        edges_to_process[edges_to_process.index(edge_loop)] = None
         
     # The loop was processed
     return processed
