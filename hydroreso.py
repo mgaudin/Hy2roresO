@@ -854,7 +854,7 @@ def features_to_edges(list_features, edges):
         # ID of the feature
         id_feature = feature.id()
         # Corresponding edge: index in the edges list
-        edge = edges[id_feature]
+        edge = edges[id_feature-1]
         # Update list
         list_edges.append(edge)
         
